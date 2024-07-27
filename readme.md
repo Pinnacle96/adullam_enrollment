@@ -1,4 +1,4 @@
-# ARC: College Admission Managment System Project
+# ADULLAM: College Admission Managment System Project
 A College Admission Managment System Project made for automating and digitizing the admission process of a college. This project is made using PHP, MySQL, HTML, CSS, Bootstrap, JavaScript, jQuery, Ajax. 
 
 ## Tech Stack
@@ -25,8 +25,8 @@ Password : Test@123
 
 ### Credentials for Student
 
-username : test1@gmail.com
-Password : Test@123
+username : noah.poeni@gmail.com
+Password : 12345678
 
 
 
