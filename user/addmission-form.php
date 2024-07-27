@@ -251,8 +251,6 @@ if($rw>0) {
                 </tr>
                 
             <tr>
-              <th>Admission Number</th>
-                <td><?php echo $row['Adm_no'];?></td>
               <th>Applicant Name</th>
                 <td><?php echo $row['FirstName']." ".$row['LastName'];?></td>
                
@@ -676,12 +674,7 @@ if($rw>0) {
    <div class="form-group">
    <select name='programApplied' id="programApplied" class="form-control white_bg" required="true">
      <option value="">-----Select Program Applied-----</option>
-      <?php //$query=mysqli_query($con,"select * from tblcourse");
-              //while($row=mysqli_fetch_array($query))
-              {
-              ?>    
-             <!-- <option value="<?php //echo $row['program'];?>"><?php// echo $row['program'];?></option>-->
-                  <?php //} ?> 
+     
                    <option value="Certificate in Theology">Certificate</option> 
                     <option value="Diploma in Theology">Diploma</option> 
                      <option value="Bachelor of Theology">Bachelor of Theology</option>
