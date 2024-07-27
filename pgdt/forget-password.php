@@ -1,26 +1,26 @@
 <?php
-
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-error_reporting(0);
-
 
 if(isset($_POST['submit']))
-{
- $mobno=$_SESSION['mobilenumber'];
-    $email=$_SESSION['email'];
-$newpassword=md5($_POST['newpassword']);
-$query=mysqli_query($con,"update tbluser set Password ='$newpassword' where  Email='$email' && MobileNumber = $mobno ");
-$row=mysqli_fetch_array($query);
-if($query)
-   {
-echo "<script>alert('Password successfully changed');</script>";
-session_destroy();
-   }
-  
+  {
+    $mobno=$_POST['mobilenumber'];
+    $email=$_POST['email'];
+
+        $query=mysqli_query($con,"select ID from tbluser where  Email='$email' and  MobileNumber ='$mobno' ");
+    $ret=mysqli_fetch_array($query);
+    if($ret>0){
+      $_SESSION['mobilenumber']=$mobno;
+      $_SESSION['email']=$email;
+     echo "<script type='text/javascript'> document.location ='reset-password.php'; </script>";
+    }
+    else{
+       echo "<script>alert('Invalid Details. Please try again.');</script>";
+    }
   }
   ?>
+
 
 
 
@@ -29,7 +29,7 @@ session_destroy();
 <html class="loading" lang="en" data-textdirection="ltr">
 <head>
 
-  <title>User Login
+  <title>College Admission Management System!! Forgot Password
   </title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
   rel="stylesheet">
@@ -51,19 +51,6 @@ session_destroy();
   <!-- BEGIN Custom CSS-->
   <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
   <!-- END Custom CSS-->
-<script type="text/javascript">
-function checkpass()
-{
-if(document.resetpassword.newpassword.value!=document.resetpassword.confirmpassword.value)
-{
-alert('New Password and Confirm Password field does not match');
-document.resetpassword.confirmpassword.focus();
-return false;
-}
-return true;
-} 
-
-</script>
 
 </head>
 <body class="vertical-layout vertical-menu 1-column  bg-cyan bg-lighten-2 menu-expanded fixed-navbar"
@@ -106,11 +93,11 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
             <div class="col-md-4 col-10 box-shadow-2 p-0">
               <div class="card border-grey border-lighten-3 m-0">
                 <div class="card-header border-0 pb-0">
-                   <div class="card-title text-center">
-              <h4 style="font-weight: bold"> ARC Reset Password</h4>
+                  <div class="card-title text-center">
+              <h4 style="font-weight: bold"> ARC Recover Password</h4>
                   </div>
                   <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
-                    <span>Reset</span>
+                    <span>Forget Password</span>
                   </h6>
                 </div>
                 <div class="card-content">
@@ -118,44 +105,42 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                     <p style="font-size:16px; color:red" align="center"> <?php if($msg){
     echo $msg;
   }  ?> </p>
-                    <form class="form-horizontal"  name="resetpassword"  method="post" onsubmit="return checkpass();">
-                      
-                        
-                      
+                    <form class="form-horizontal" action=""   method="post" >
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12">
                           <fieldset class="form-group position-relative has-icon-left">
-                            <input type="password" name="newpassword" id="newpassword" class="form-control input-lg"
-                            placeholder="Enter New Password" tabindex="5" required>
-                            <div class="form-control-position">
-                              <i class="la la-key"></i>
-                            </div>
-                            <div class="help-block font-small-3"></div>
-                          </fieldset>
-
+                        <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address"
+                        tabindex="4" required="true" required data-validation-required-message="Please enter email address.">
+                        <div class="form-control-position">
+                          <i class="ft-mail"></i>
+                        </div>
+                        <div class="help-block font-small-3"></div>
+                      </fieldset>
+                        </div>
+                      </div>
+                       <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12">
                           <fieldset class="form-group position-relative has-icon-left">
-                            <input type="password" name="confirmpassword" id="confirmpassword" class="form-control input-lg"
-                            placeholder="Enter Confirm Password" tabindex="5" required>
-                            <div class="form-control-position">
-                              <i class="la la-key"></i>
-                            </div>
-                            <div class="help-block font-small-3"></div>
-                          </fieldset>
-
-
-                        
-                                             <div class="row">
+                        <input type="text" name="mobilenumber" id="mobilenumber" class="form-control input-lg"
+                        placeholder="Contact Number" required="true" maxlength="10" tabindex="3" required data-validation-required-message="Please enter display name.">
+                        <div class="form-control-position">
+                          <i class="ft-user"></i>
+                        </div>
+                        <div class="help-block font-small-3"></div>
+                      </fieldset>
+                        </div>
+                       
+                      </div>
+                      
+                    
+                      
+                      
+                      <div class="row">
                         <div class="col-6 col-sm-6 col-md-6">
                           <button type="submit" name="submit" class="btn btn-info btn-lg btn-block"><i class="ft-user"></i>Reset</button>
-                        </div>
 
-                        <div class="col-6 col-sm-6 col-md-6">
-                          <a href="login.php" class="btn btn-danger btn-lg btn-block"><i class="ft-unlock"></i> Login</a>
-                        </div>
-                        
-                      </div>
-                       <div class="col-6 col-sm-6 col-md-6">
-                          <p><a href="signup.php">New User can register ?</a></p>
-                        </div>
-                        
+                        </div>    <div class="col-6 col-sm-6 col-md-6">
+                        <a href="login.php" class="btn btn-danger btn-lg btn-block"><i class="ft-unlock"></i> Login</a></div>
                       </div>
                     </form>
                   </div>
@@ -168,7 +153,12 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
     </div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
-  <?php include ("includes/footer.php");?>
+  <footer class="footer fixed-bottom footer-dark navbar-border navbar-shadow">
+    <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
+      <span class="float-md-left d-block d-md-inline-block">Copyright &copy; <?php echo date('Y');?> <a class="text-bold-800 grey darken-2">ARC </a>, All rights reserved. </span>
+
+    </p>
+  </footer>
   <!-- BEGIN VENDOR JS-->
   <script src="../app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
   <!-- BEGIN VENDOR JS-->

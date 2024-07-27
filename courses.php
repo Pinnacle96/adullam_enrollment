@@ -1,29 +1,3 @@
-<?php
-include('includes/dbconnection.php');
-session_start();
-error_reporting(0);
-
-?>
-<!doctype html>
-<html lang="en">
-
-<head>
-
-  <title>Adnission Management System||Courses</title>
-  <!-- web fonts -->
-  <link href="//fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-  <!-- //web fonts -->
-  <!-- Favicons -->
-  <link rel="icon" href="./assets/images/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images//favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images//favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images//favicon/favicon-16x16.png">
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="assets/css/style-starter.css">
-</head>
-
-<body>
-
   <?php include_once("includes/header.php"); ?>
   <section class="w3l-service-breadcrum">
     <div class="breadcrum-bg py-sm-5 py-4">
@@ -49,12 +23,12 @@ error_reporting(0);
           while ($row = mysqli_fetch_array($ret)) {
 
           ?>
-            <div class="col-lg-4 col-md-6 mt-md-0 mt-4 w3l-pricing-7-gd-left active">
-              <div class="w3l-pricing-7 pric-7 active">
-                <h6><?php echo $row['CourseName']; ?></h6>
+            <div class="col-lg-6 col-md-6 mt-md-0 mt-4 w3l-pricing-8-gd-left active">
+              <div class="w3l-pricing-8 pric-8 active">
+                <h6><?php echo $row['program']; ?></h6>
                 <div class="w3l-pricing-7-top p-2">
 
-                  <p><?php echo $row['CourseDescription']; ?></p>
+                  <p class="text-justify"><?php echo $row['CourseDescription']; ?></p>
                 </div>
                 <br>
               </div>

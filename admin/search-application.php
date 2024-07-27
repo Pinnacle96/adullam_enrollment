@@ -113,11 +113,12 @@ $sdata=$_POST['searchdata'];
 <h4 align="center">Result againt "<?php echo $sdata;?>" keyword </h4>
 <div class="row">
 <div class="col-xl-12 col-lg-12">
+  <div class="table-responsive">
 <table class="table mb-0">
  <thead>
                 <tr>
                   <th>S.NO</th>
-                  <th>Course Applied</th>
+                  <th>Program Applied</th>
                   <th>First Name</th>
                   <th>Last Name</th>
                    <th>Mobile Number</th>
@@ -127,7 +128,7 @@ $sdata=$_POST['searchdata'];
               </thead>
   <?php
             
-$ret=mysqli_query($con,"select tbladmapplications.CourseApplied,tbladmapplications.ID as apid, tbluser.FirstName,tbluser.LastName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.ID=tbladmapplications.UserId where tbluser.FirstName like '%$sdata%' || tbluser.MobileNumber like '%$sdata%' || tbluser.Email like '%$sdata%'");
+$ret=mysqli_query($con,"select tbladmapplications.programApplied,tbladmapplications.ID as apid, tbluser.FirstName,tbluser.LastName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.ID=tbladmapplications.UserId where tbluser.FirstName like '%$sdata%' || tbluser.MobileNumber like '%$sdata%' || tbluser.Email like '%$sdata%'");
 $cnt=1;
 $num=mysqli_num_rows($ret);
 if($num>0)
@@ -138,7 +139,7 @@ while ($row=mysqli_fetch_array($ret)) {
               
                 <tr>
                   <td><?php echo $cnt;?></td>
-                       <td><?php  echo $row['CourseApplied'];?></td>
+                       <td><?php  echo $row['programApplied'];?></td>
                   <td><?php  echo $row['FirstName'];?></td>
                   <td><?php  echo $row['LastName'];?></td>
                    <td><?php  echo $row['MobileNumber'];?></td>
@@ -156,6 +157,7 @@ $cnt=$cnt+1;
 <?php } ?>
 
 </table>
+</div>
 </div>
 </div>
 <?php }?>

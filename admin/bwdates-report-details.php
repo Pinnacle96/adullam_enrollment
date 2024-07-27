@@ -81,52 +81,56 @@ $fdate=$_POST['fromdate'];
 $tdate=$_POST['todate'];
 
 ?>
-<table class="table mb-0">
- <thead>
-                <tr>
-                  <th>S.NO</th>
-                  <th>Course Applied</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                   <th>Mobile Number</th>
-                   <th>Email</th>
-                   <th>Status</th>
-                   <th>Action</th>
-                </tr>
-              </thead>
-  <?php
-            
-$ret=mysqli_query($con,"select tblfees.ID as feesid,tbladmapplications.CourseApplied,tbladmapplications.ID as apid,tbladmapplications.AdminStatus,tbladmapplications.AdminRemarkDate, tbluser.FirstName,tbluser.LastName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.ID=tbladmapplications.UserId  left join tblfees on tblfees.UserID=tbladmapplications.UserID where tbladmapplications.AdminStatus='1' && tbladmapplications.AdminRemarkDate between '$fdate' and '$tdate'");
-$cnt=1;
-while ($row=mysqli_fetch_array($ret)) {
-
-?>
-              
-                <tr>
-                  <td><?php echo $cnt;?></td>
-                       <td><?php  echo $row['CourseApplied'];?></td>
-                  <td><?php  echo $row['FirstName'];?></td>
-                  <td><?php  echo $row['LastName'];?></td>
-                   <td><?php  echo $row['MobileNumber'];?></td>
-                    <td><?php  echo $row['Email'];?></td>
-         <?php if($row['AdminStatus']==""){ ?>
-
-                     <td><?php echo "Not Updated Yet"; ?></td>
-<?php } if($row['AdminStatus']=="1"){ ?>                  <td><?php  echo "Selected";?></td>
-<?php } if($row['AdminStatus']=="2"){ ?>
-   <td><?php  echo "Rejected";?>
-                  </td>
-                  <?php } ?>
-                  <td><a href="view-appform.php?aticid=<?php echo $row['apid'];?>" target="_blank">View Details</a> | 
-<a href="view-fees.php?docid=<?php echo $row['feesid'];?>" target="_blank">View Fees</a>
-                  </td>
-                </tr>
-                <?php 
-$cnt=$cnt+1;
-}?>
-
-
-</table>
+<div class="table-responsive">
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>S.NO</th>
+        <th>Program Applied</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Mobile Number</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      $ret = mysqli_query($con, "SELECT tblfees.ID AS feesid, tbladmapplications.programApplied, tbladmapplications.ID AS apid, tbladmapplications.AdminStatus, tbladmapplications.AdminRemarkDate, tbluser.FirstName, tbluser.LastName, tbluser.MobileNumber, tbluser.Email FROM tbladmapplications INNER JOIN tbluser ON tbluser.ID = tbladmapplications.UserId LEFT JOIN tblfees ON tblfees.UserID = tbladmapplications.UserID WHERE tbladmapplications.AdminStatus = '1' && tbladmapplications.AdminRemarkDate BETWEEN '$fdate' AND '$tdate'");
+      $cnt = 1;
+      while ($row = mysqli_fetch_array($ret)) {
+        ?>
+        <tr>
+          <td><?php echo $cnt; ?></td>
+          <td><?php echo $row['programApplied']; ?></td>
+          <td><?php echo $row['FirstName']; ?></td>
+          <td><?php echo $row['LastName']; ?></td>
+          <td><?php echo $row['MobileNumber']; ?></td>
+          <td><?php echo $row['Email']; ?></td>
+          <td>
+            <?php
+            if ($row['AdminStatus'] == "") {
+              echo "Not Updated Yet";
+            } elseif ($row['AdminStatus'] == "1") {
+              echo "Admitted";
+            } elseif ($row['AdminStatus'] == "2") {
+              echo "Not Admitted";
+            }
+            ?>
+          </td>
+          <td>
+            <a href="view-appform.php?aticid=<?php echo $row['apid']; ?>" target="_blank">View Details</a> |
+            <a href="view-fees.php?docid=<?php echo $row['feesid']; ?>" target="_blank">View Fees</a>
+          </td>
+        </tr>
+        <?php
+        $cnt++;
+      }
+      ?>
+    </tbody>
+  </table>
+</div>
 
 
 

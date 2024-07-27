@@ -1,4 +1,27 @@
-<!-- Top Menu 1 -->
+<?php
+include('includes/dbconnection.php');
+session_start();
+error_reporting(0);
+?>
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>ADULLAM || Admission Management System||Courses</title>
+  <!-- web fonts -->
+  <link href="//fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+  <!-- //web fonts -->
+  <!-- Favicons -->
+  <link rel="icon" href="./assets/images/favicon/favicon.png" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images//favicon/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images//favicon/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images//favicon/favicon.png">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="assets/css/style-starter.css">
+  </head>
+
+<body><!-- Top Menu 1 -->
 <section class="w3l-top-menu-1">
   <div class="top-hd">
     <div class="container">
@@ -15,7 +38,7 @@ while ($row=mysqli_fetch_array($ret)) {
         <li class="top_li1"><span class="fa fa-envelope-o"></span> <?php  echo $row['Email'];?> </li>
     </div><?php } ?>
     <div class="social-top col-md-3 col-6">
-      <a href="user/login.php" class="btn btn-secondary btn-theme4">Apply Now</a>
+      <a href="#user/login.php" class="btn btn-secondary btn-theme4">E-Portal</a>
     </div>
   </header>
 </div>
@@ -53,10 +76,17 @@ while ($row=mysqli_fetch_array($ret)) {
           </li>
          <!-- <li class="nav-item">
             <a class="nav-link" href="admin/login.php">Admin</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="user/login.php">Apply</a>
           </li>-->
+          <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Admission
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="user/login.php">Undergraduate Program</a>
+        <a class="dropdown-item" href="pgdt/login.php">Postgraduate Program</a>
+        <!-- Add more items as needed -->
+    </div>
+</li>
         </ul>
        
       </div>

@@ -1,31 +1,3 @@
-<?php
-include('includes/dbconnection.php');
-session_start();
-error_reporting(0);
-
-?>
-<!doctype html>
-<html lang="en">
-
-<head>
-
-  <title>ADULLAM || Admission Management System||Home Page</title>
-  <!-- web fonts -->
-  <link href="//fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-  <!-- //web fonts -->
-  <!-- Favicons -->
-  <link rel="icon" href="./assets/images/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images//favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images//favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images//favicon/favicon-16x16.png">
-
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="assets/css/style-starter.css">
-</head>
-
-<body>
-
-
   <?php include('includes/header.php'); ?>
   <section class="w3l-main-slider" id="home">
     <!-- main-slider -->
@@ -173,7 +145,7 @@ error_reporting(0);
             </div>
           </div>
           <div class="column2">
-            <a class="btn btn-secondary btn-theme2 mt-3" href="user/login.php"> Apply Here</a>
+            <a class="btn btn-secondary btn-theme2 mt-3" href="courses.php"> Apply Here</a>
           </div>
         </div>
       </div>
@@ -185,37 +157,38 @@ error_reporting(0);
       <div class="container py-md-3">
         <div class="pricing-style-w3ls row py-md-5">
           <div class="pricing-chart col-lg-12">
-            <h3 class="">Latest Notices</h3> <?php $query = mysqli_query($con, "select * from tblnotice ORDER BY ID DESC LIMIT 1");
-                                              while ($row = mysqli_fetch_array($query)) {
-                                              ?>
-              <div class="tatest-top mt-md-5 mt-4">
-                <div class="price-box btn-layout bt6">
-                  <div class="grid grid-column-2">
-                    <div class="column-6">
-                      <img src="assets/images/g9.jpg" alt="" class="img-fluid">
-                    </div>
-                    <div class="column1">
-
-                      <div class="job-info">
-
-                        <h6 class="pricehead"><?php echo $row['Title']; ?></h6>
-                        <h5><?php echo $row['CreationDate']; ?></h5>
-                        <p><?php echo $row['Decription']; ?></p>
-
+            <h3 class="text-center">Latest Notices</h3>
+            <div class="row">
+              <?php
+              $query = mysqli_query($con, "SELECT * FROM tblnotice ORDER BY ID DESC LIMIT 4");
+              while ($row = mysqli_fetch_array($query)) {
+              ?>
+                <div class="col-md-6">
+                  <div class="tatest-top mt-md-5 mt-4">
+                    <div class="price-box btn-layout bt6">
+                      <div class="grid grid-column-2">
+                        <div class="column-6">
+                          <img src="assets/images/g9.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="column1">
+                          <div class="job-info">
+                            <h6 class="pricehead"><?php echo $row['Title']; ?></h6>
+                            <h5><?php echo $row['CreationDate']; ?></h5>
+                            <p><?php echo $row['Decription']; ?></p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-
                   </div>
                 </div>
-
-              </div>
-            <?php } ?>
+              <?php } ?>
+            </div>
           </div>
-
         </div>
       </div>
     </div>
   </section>
+
   <!-- grids block 5 -->
   <?php include('includes/footer.php'); ?>
   <script src="assets/js/jquery-3.3.1.min.js"></script>

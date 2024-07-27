@@ -33,8 +33,8 @@ if (isset($_POST['sub'])) {
               <li>
                 <p><span class="fa fa-map-marker"></span> <?php echo $row['PageDescription']; ?></p>
               </li>
-              <li><a href="tel:+91-9795285894"><span class="fa fa-phone"></span> +234-<?php echo $row['MobileNumber']; ?></a></li>
-              <li><a href="mailto:siddiquizaid213@gmail.com" class="mail"><span class="fa fa-envelope-open-o"></span> <?php echo $row['Email']; ?></a></li><?php } ?>
+              <li><a href="tel:+234-7032078859"><span class="fa fa-phone"></span> +234-<?php echo $row['MobileNumber']; ?></a></li>
+              <li><a href="mailto:rcntsonline@gmail.com" class="mail"><span class="fa fa-envelope-open-o"></span> <?php echo $row['Email']; ?></a></li><?php } ?>
           </ul>
           <div class="main-social-footer-29">
             <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
@@ -52,7 +52,8 @@ if (isset($_POST['sub'])) {
             <li><a href="contact.php">Contact</a></li>
             <li><a href="courses.php">Courses</a></li>
             <li><a href="admin/login.php">Admin</a></li>
-            <li><a href="user/login.php">Apply Now</a></li>
+            <li><a href="user/login.php">Undergraduate</a></li>
+            <li><a href="pgdt/login.php">Postgraduate</a></li>
           </ul>
         </div>
         <div class="footer-list-29 footer-3">
@@ -71,11 +72,11 @@ if (isset($_POST['sub'])) {
       <div class="d-grid grid-col-2 bottom-copies">
         <p class="copy-footer-29">Designed & Developed By Pinnacle Tech Hub</p>
         <br>
-        <p class="copy-footer-29">Copyright ©  <?php
-                    $currentYear = date('Y');
-                    $endYear = 2027; // You can change this to any future year
-                ?>
-                <?php echo $currentYear; ?> - <?php echo $endYear; ?> ADULLAM. All rights reserved </p>
+        <p class="copy-footer-29">Copyright © <?php
+                                              $currentYear = date('Y');
+                                              $endYear = 2030; // You can change this to any future year
+                                              ?>
+          <?php echo $currentYear; ?> - <?php echo $endYear; ?> ADULLAM. All rights reserved </p>
       </div>
     </div>
   </div>

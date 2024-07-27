@@ -117,22 +117,22 @@ if (strlen($_SESSION['uid']) == 0) {
             move_uploaded_file($_FILES["receipt"]["tmp_name"], "userdocs/" . $receipt);
             move_uploaded_file($_FILES["userpic"]["tmp_name"], "userimages/" . $userpic);
 
-            //  // Generate ADM No (e.g., ADM/2024/UND/00001)
+             // Generate ADM No (e.g., ADM/2024/UND/00001)
             // $prefix = "ADM/2024/UND/";
-            // $query_count = mysqli_query($con, "SELECT COUNT(ID) as total FROM tbladmapplications");
+            // $query_count = mysqli_query($con, "SELECT COUNT(ID) as total FROM pgapplications");
             // $row_count = mysqli_fetch_assoc($query_count);
             // $count = $row_count['total'] + 1;
             // $adm_no = $prefix . sprintf('%05d', $count);
 
             // Prepare SQL statement
-            $query = mysqli_prepare($con, "INSERT INTO tbladmapplications (UserId, title, dob, gender, contadd, city, state, country, postalcode, phone, Nationality, salvation, conversion, ministry, calltoministry, spiritual, reasons, churchName, churchAddress, ministerName, ministerEmail, ministerPhone, churchActivities, bwater, bwaterDate, tongues, programApplied, learningOption, disability, mentalIllness, eatingDisorder, medicalProblem, prescribedMed, specialDiet, learningDisability, hobbies, workExperience, emergencyName, emergencyPhone, emergencyEmail, ref1Name, ref1Phone, ref1Email, ref2Name, ref2Phone, ref2Email, accommodation, agreement, userpic, birthCert, lgaCert, refLetter, acadCert, receipt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
+            $query = mysqli_prepare($con, "INSERT INTO pgapplications (UserId, title, dob, gender, contadd, city, state, country, postalcode, phone, Nationality, salvation, conversion, ministry, calltoministry, spiritual, reasons, churchName, churchAddress, ministerName, ministerEmail, ministerPhone, churchActivities, bwater, bwaterDate, tongues, programApplied, learningOption, disability, mentalIllness, eatingDisorder, medicalProblem, prescribedMed, specialDiet, learningDisability, hobbies, workExperience, emergencyName, emergencyPhone, emergencyEmail, ref1Name, ref1Phone, ref1Email, ref2Name, ref2Phone, ref2Email, accommodation, agreement, userpic, birthCert, lgaCert, refLetter, acadCert, receipt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
 
             if ($query === false) {
                 trigger_error('Statement prepare failed!', E_USER_ERROR);
             }
 
             // Bind parameters
-            mysqli_stmt_bind_param($query, "ssssssssssssssssssssssssssssssssssssssssssssssssssssss", $uid, $title, $dob, $gender, $contadd, $city, $state, $country, $postalcode, $phone, $nationality, $salvation, $conversion, $ministry, $calltoministry, $spiritual, $reasons, $churchName, $churchAddress, $ministerName, $ministerEmail, $ministerPhone, $churchActivities, $bwater, $bwaterDate, $tongues, $programApplied, $learningOption, $disability, $mentalIllness, $eatingDisorder, $medicalProblem, $prescribedMed, $specialDiet, $learningDisability, $hobbies, $workExperience, $emergencyName, $emergencyPhone, $emergencyEmail, $ref1Name, $ref1Phone, $ref1Email, $ref2Name, $ref2Phone, $ref2Email, $accommodation, $agreement, $userpic, $birthCert, $lgaCert, $refLetter, $acadCert, $receipt);
+            mysqli_stmt_bind_param($query, "sssssssssssssssssssssssssssssssssssssssssssssssssssssss", $uid, $adm_no, $title, $dob, $gender, $contadd, $city, $state, $country, $postalcode, $phone, $nationality, $salvation, $conversion, $ministry, $calltoministry, $spiritual, $reasons, $churchName, $churchAddress, $ministerName, $ministerEmail, $ministerPhone, $churchActivities, $bwater, $bwaterDate, $tongues, $programApplied, $learningOption, $disability, $mentalIllness, $eatingDisorder, $medicalProblem, $prescribedMed, $specialDiet, $learningDisability, $hobbies, $workExperience, $emergencyName, $emergencyPhone, $emergencyEmail, $ref1Name, $ref1Phone, $ref1Email, $ref2Name, $ref2Phone, $ref2Email, $accommodation, $agreement, $userpic, $birthCert, $lgaCert, $refLetter, $acadCert, $receipt);
 
             // Execute statement
             mysqli_stmt_execute($query);
@@ -209,8 +209,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
   
 <?php 
 $stuid=$_SESSION['uid'];
-$query=mysqli_query($con,"select tbladmapplications.*,tbluser.*,tbladmapplications.ID as appid from tbladmapplications 
-                          join tbluser on tbluser.ID=tbladmapplications.UserId where UserId=$stuid");
+$query=mysqli_query($con,"select pgapplications.*,tbluser.*,pgapplications.ID as appid from pgapplications 
+                          join tbluser on tbluser.ID=pgapplications.UserId where UserId=$stuid");
 $rw=mysqli_num_rows($query);
 if($rw>0) {
     while($row=mysqli_fetch_array($query)) {
@@ -363,7 +363,7 @@ if($rw>0) {
 <div class="row">
   <!-- <div class="col-xl-6 col-lg-12">
  <fieldset>
-  <h5>Title</h5>
+  
    <div class="form-group">
     <input class="form-control white_bg" id="Adm_no" name="Adm_no"  type="hidden" value="<?php echo $adm_no; ?>" required>
     </div>
@@ -682,10 +682,9 @@ if($rw>0) {
               ?>    
              <!-- <option value="<?php //echo $row['program'];?>"><?php// echo $row['program'];?></option>-->
                   <?php //} ?> 
-                   <option value="Certificate in Theology">Certificate</option> 
-                    <option value="Diploma in Theology">Diploma</option> 
-                     <option value="Bachelor of Theology">Bachelor of Theology</option>
-                     <option value="Postgraduate degree">Postgraduate degree</option> 
+                   <option value="Postgraduate Diploma in Theology">Postgraduate Diploma</option> 
+                    <option value="Master of Theology">Master of Theology</option> 
+                     <option value="Master of Divinity">Master of Divinity</option> 
    </select>
     </div>
 </fieldset>
@@ -966,7 +965,7 @@ if($rw>0) {
 </div>
 <div class="col-xl-6 col-lg-12">
   <fieldset>
-  <h5>Upload Academic Degree Certificate</h5>
+  <h5>Upload Academic Degree Certificate (O'Level Certificate or its equivalent)</h5>
    <div class="form-group">
     <input class="form-control white_bg" id="acadCert" name="acadCert"  type="file">
     </div>
@@ -1089,4 +1088,4 @@ WinPrint.print();
 </script>
 </body>
 </html>
-<?php  //} ?>
+<?php  } ?>
