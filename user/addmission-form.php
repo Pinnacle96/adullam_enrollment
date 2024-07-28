@@ -363,7 +363,7 @@ if($rw>0) {
  <fieldset>
   <h5>Title</h5>
    <div class="form-group">
-    <input class="form-control white_bg" id="Adm_no" name="Adm_no"  type="hidden" value="<?php echo $adm_no; ?>" required>
+    <input class="form-control white_bg" id="Adm_no" name="Adm_no"  type="hidden" value="<?php //echo $adm_no; ?>" required>
     </div>
 </fieldset>
                    
@@ -663,40 +663,133 @@ if($rw>0) {
 </div>
 
 <div class="row" style="margin-top: 1%">
-  
-<div class="col-xl-12 col-lg-12"><h4 class="card-title"><b>Program Type and Mode of Learning</b></h4> <hr />
-</div>
+  <div class="col-xl-12 col-lg-12">
+    <h4 class="card-title"><b>Program Type and Mode of Learning</b></h4>
+    <hr />
+  </div>
 </div>
 <div class="row">
   <div class="col-xl-6 col-lg-12">
- <fieldset>
-  <h5>Program Applied                   </h5>
-   <div class="form-group">
-   <select name='programApplied' id="programApplied" class="form-control white_bg" required="true">
-     <option value="">-----Select Program Applied-----</option>
-     
-                   <option value="Certificate in Theology">Certificate</option> 
-                    <option value="Diploma in Theology">Diploma</option> 
-                     <option value="Bachelor of Theology">Bachelor of Theology</option>
-                     <option value="Postgraduate degree">Postgraduate degree</option> 
-   </select>
-    </div>
-</fieldset>
-                   
-</div>
+    <fieldset>
+      <h5>Program Applied</h5>
+      <div class="form-group">
+        <select name='programApplied' id="programApplied" class="form-control white_bg" required="true">
+          <option value="">-----Select Program Applied-----</option>
+          <option value="Certificate in Theology">Certificate</option>
+          <option value="Diploma in Theology">Diploma</option>
+          <option value="Bachelor of Theology">Bachelor of Theology</option>
+          <option value="Postgraduate Degree">Postgraduate degree</option>
+          <option value="Master of Divinity">Master of Divinity</option>
+          <option value="Master of Theology">Master of Theology</option>
+        </select>
+      </div>
+    </fieldset>
+  </div>
   <div class="col-xl-6 col-lg-12">
     <fieldset>
-       <h5>Learning Option </h5>
-  <div class="form-group"> 
-<select class="form-control white_bg" id="learningOption" name="learningOption"  required>
-    <option value="">-----Select learning Option-----</option>
-    <option value="Online">Online</option>
-    <option value="On-Campus">On-Campus</option>
-</select></div>
+      <h5>Learning Option</h5>
+      <div class="form-group">
+        <select class="form-control white_bg" id="learningOption" name="learningOption" required>
+          <option value="">-----Select learning Option-----</option>
+          <option value="Online">Online</option>
+          <option value="On-Campus">On-Campus</option>
+        </select>
+      </div>
     </fieldset>
-   
+  </div>
 </div>
+
+<!-- Document Upload Sections -->
+<div id="docUploadCertDip" style="display:none;">
+  <div class="row" style="margin-top: 2%">
+    <div class="col-xl-12 col-lg-12">
+      <h4 class="card-title"><b>Document Upload</b></h4>
+      <hr />
+    </div>
+  </div>
+  <div class="row" style="margin-top: 2%">
+    <div class="col-xl-6 col-lg-12">
+      <fieldset>
+        <h5>Upload Birth Certificate or Declaration of Age</h5>
+        <div class="form-group">
+          <input class="form-control white_bg" id="birthCert" name="birthCert" type="file" required>
+        </div>
+      </fieldset>
+    </div>
+    <div class="col-xl-6 col-lg-12">
+      <fieldset>
+        <h5>Upload State/Local Government of Origin</h5>
+        <div class="form-group">
+          <input class="form-control white_bg" id="lgaCert" name="lgaCert" type="file" required>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-6 col-lg-12">
+      <fieldset>
+        <h5>Upload Reference Letter from a Clergy</h5>
+        <div class="form-group">
+          <input class="form-control white_bg" id="refLetter" name="refLetter" type="file" required>
+        </div>
+      </fieldset>
+    </div>
+    <div class="col-xl-6 col-lg-12">
+      <fieldset>
+        <h5>Upload Academic Degree Certificate (O'level or it's equivalent)</h5>
+        <div class="form-group">
+          <input class="form-control white_bg" id="acadCert" name="acadCert" type="file">
+        </div>
+      </fieldset>
+    </div>
+  </div>
 </div>
+
+<div id="docUploadBachPost" style="display:none;">
+  <div class="row" style="margin-top: 2%">
+    <div class="col-xl-12 col-lg-12">
+      <h4 class="card-title"><b>Document Upload</b></h4>
+      <hr />
+    </div>
+  </div>
+  <div class="row" style="margin-top: 2%">
+    <div class="col-xl-6 col-lg-12">
+      <fieldset>
+        <h5>Upload Birth Certificate or Declaration of Age</h5>
+        <div class="form-group">
+          <input class="form-control white_bg" id="birthCert" name="birthCert" type="file" required>
+        </div>
+      </fieldset>
+    </div>
+    <div class="col-xl-6 col-lg-12">
+      <fieldset>
+        <h5>Upload State/Local Government of Origin</h5>
+        <div class="form-group">
+          <input class="form-control white_bg" id="lgaCert" name="lgaCert" type="file" required>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-6 col-lg-12">
+      <fieldset>
+        <h5>Upload Reference Letter from a Clergy</h5>
+        <div class="form-group">
+          <input class="form-control white_bg" id="refLetter" name="refLetter" type="file" required>
+        </div>
+      </fieldset>
+    </div>
+    <div class="col-xl-6 col-lg-12">
+      <fieldset>
+        <h5>Upload Academic Degree Certificate (First degree or it's equivalent)</h5>
+        <div class="form-group">
+          <input class="form-control white_bg" id="acadCert" name="acadCert" type="file">
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>
+
 <div class="row" style="margin-top: 1%">
   
 <div class="col-xl-12 col-lg-12"><h4 class="card-title"><b>Health and Medical Information</b></h4> <hr />
@@ -925,51 +1018,7 @@ if($rw>0) {
 </div>
 </div>
 <div class="row" style="margin-top: 2%">
-  
-<div class="col-xl-12 col-lg-12"><h4 class="card-title"><b>Document Upload</b></h4> <hr />
-</div>
-</div>
-<div class="row" style="margin-top: 2%">
-<div class="col-xl-6 col-lg-12">
- <fieldset>
-  <h5>Upload Birth Certificate or Declaration of Age</h5>
-   <div class="form-group">
-    <input class="form-control white_bg" id="birthCert" name="birthCert"  type="file" required>
-    </div>
-</fieldset>
-                 
-</div>
-<div class="col-xl-6 col-lg-12">
- <fieldset>
-  <h5>Upload State/Local Government of Origin                  </h5>
-   <div class="form-group">
-    <input class="form-control white_bg" id="lgaCert" name="lgaCert"  type="file" required>
-    </div>
-</fieldset>                 
-</div>
-</div>
- <div class="row">
-<div class="col-xl-6 col-lg-12">
- <fieldset>
-  <h5>Upload Reference Letter from a Clergy                   </h5>
-   <div class="form-group">
-    <input class="form-control white_bg" id="refLetter" name="refLetter"  type="file" required>
-    </div>
-</fieldset>                 
-</div>
-<div class="col-xl-6 col-lg-12">
-  <fieldset>
-  <h5>Upload Academic Degree Certificate</h5>
-   <div class="form-group">
-    <input class="form-control white_bg" id="acadCert" name="acadCert"  type="file">
-    </div>
-</fieldset>
- </div>
-                    </div>        
-  
-<div class="row" style="margin-top: 2%">
-  
-<div class="col-xl-12 col-lg-12"><h4 class="card-title"><b>Enrollment Agreement</b></h4> <hr />
+  <div class="col-xl-12 col-lg-12"><h4 class="card-title"><b>Enrollment Agreement</b></h4> <hr />
 </div>
 </div>
  <div class="row">
@@ -1080,6 +1129,24 @@ WinPrint.print();
 }
 
 </script>
+<script>
+document.getElementById('programApplied').addEventListener('change', function() {
+  var value = this.value;
+  var certDipSection = document.getElementById('docUploadCertDip');
+  var bachPostSection = document.getElementById('docUploadBachPost');
+
+  if (value === 'Certificate in Theology' || value === 'Diploma in Theology' || value === 'Bachelor of Theology') {
+    certDipSection.style.display = 'block';
+    bachPostSection.style.display = 'none';
+  } else if (value === 'Postgraduate Degree' || value === 'Master of Divinity' || value === 'Master of Theology') {
+    certDipSection.style.display = 'none';
+    bachPostSection.style.display = 'block';
+  } else {
+    certDipSection.style.display = 'none';
+    bachPostSection.style.display = 'none';
+  }
+});
+</script>
 </body>
 </html>
-<?php  } ?>
+<?php // } ?>
