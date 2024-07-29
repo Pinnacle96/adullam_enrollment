@@ -21,7 +21,7 @@ A College Admission Managment System Project made for automating and digitizing 
 
 ### Credentials for Admin
 username : admin
-Password : Test@123
+Password : admin
 
 ### Credentials for Student
 
