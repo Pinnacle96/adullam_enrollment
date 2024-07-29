@@ -317,7 +317,7 @@ if($rw > 0) {
         </div>
     </div>
     <div style="float:right;">
-    <button class="btn btn-primary" style="cursor: pointer;"  OnClick="CallPrint(this.value)" >Print</button></div>
+    <a href="Adullam Medical Forms.pdf" ><button class="btn btn-primary" style="cursor: pointer;"  OnClick="CallPrint(this.value)" >Download Medical Form</button></a></div>
     
     </div>
     <?php if($row['AdminStatus'] == ""): ?>
@@ -781,7 +781,7 @@ if($rw > 0) {
 </div></div>
 <div class="row">
 <div class="col-xl-12 col-lg-12">
-<h6><strong>The following questions in this section are for counselling purposes and will in no way jeopardize your acceptance into the Theological Seminary. Please note that you are required to resume on Campus with a Certificate of Fitness from a Government Hospital. <a href="#">Click here</a> to download the Health Form, which should be filled and submitted upon resumption.</strong></h6>
+<h6><strong>The following questions in this section are for counselling purposes and will in no way jeopardize your acceptance into the Theological Seminary. Please note that you are required to resume on Campus with a Certificate of Fitness from a Government Hospital. <a href="Adullam Medical Forms.pdf">Click here</a> to download the Health Form, which should be filled and submitted upon resumption.</strong></h6>
  </div>
  </div> 
   <div class="row">

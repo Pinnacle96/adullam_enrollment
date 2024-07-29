@@ -14,7 +14,7 @@ if (strlen($_SESSION['aid']) == 0) {
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700" rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
     <!-- Favicons -->
-    <link rel="icon" href="../assets/images/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../assets/images/favicon/favicon.png" type="image/x-icon" />
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon.png">
