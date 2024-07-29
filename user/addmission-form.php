@@ -208,129 +208,127 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
       <div class="content-body">
   
 <?php 
-$stuid=$_SESSION['uid'];
-$query=mysqli_query($con,"select tbladmapplications.*,tbluser.*,tbladmapplications.ID as appid from tbladmapplications 
-                          join tbluser on tbluser.ID=tbladmapplications.UserId where UserId=$stuid");
-$rw=mysqli_num_rows($query);
-if($rw>0) {
-    while($row=mysqli_fetch_array($query)) {
+$stuid = $_SESSION['uid'];
+$query = mysqli_query($con, "SELECT tbladmapplications.*, tbluser.*, tbladmapplications.ID as appid FROM tbladmapplications 
+                             JOIN tbluser ON tbluser.ID = tbladmapplications.UserId WHERE UserId = $stuid");
+$rw = mysqli_num_rows($query);
+
+if($rw > 0) {
+    while($row = mysqli_fetch_array($query)) {
+        // Debugging: Check the contents of $row
+        // echo '<pre>';
+        // var_dump($row);
+        // echo '</pre>';
 ?>
+
     <p style="font-size:16px; color:red" align="center">Your Admission Form already submitted.</p>
     <div id="exampl">  
-<div class="table-responsive">
-        <table class="table table-bordered border-0 mb-0">
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-                <td><img src="userimages/<?php echo $row['userpic'];?>" width="150" height="150"></td>
-              
-              </tr>
-               <tr>
-                  <?php if($row['AdminStatus']==""): ?>
-            <?php else: ?>
-                    
+        <div class="table-responsive">
+            <table class="table table-bordered border-0 mb-0">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><img src="userimages/<?php echo $row['userpic']; ?>" width="150" height="150"></td>
                 </tr>
                 <tr>
-                    <th>Admin Status</th>
-                    <td>
-                        <?php 
-                        if($row['AdminStatus']==""){
-                            echo "admin remark is pending";
-                        } 
-                        if($row['AdminStatus']=="1"){
-                            echo "Admitted";
-                        }
-                        if($row['AdminStatus']=="2"){
-                            echo "Not Admitted";
-                        }
-                        ?>
-                    </td>
-                    <th>Date Admited</th>
-                    <td><?php echo $row['AdminRemarkDate'];?></td>
+                    <?php if($row['AdminStatus'] != ""): ?>
+                        <th>Admin Status</th>
+                        <td>
+                            <?php 
+                            if($row['AdminStatus'] == "") {
+                                echo "Admin remark is pending";
+                            } 
+                            if($row['AdminStatus'] == "1") {
+                                echo "Admitted";
+                            }
+                            if($row['AdminStatus'] == "2") {
+                                echo "Not Admitted";
+                            }
+                            ?>
+                        </td>
+                        <th>Date Admitted</th>
+                        <td><?php echo $row['AdminRemarkDate']; ?></td>
+                    <?php endif; ?>
                 </tr>
-                
-            <tr>
-              <th>Applicant Name</th>
-                <td><?php echo $row['FirstName']." ".$row['LastName'];?></td>
-               
-            </tr>
-            <tr>
-                <th>Program Applied</th>
-                <td><?php echo $row['programApplied'];?></td>
-                 <th>Registration Date</th>
-                <td><?php echo $row['programApplieddate'];?></td>
-            </tr>
-            <tr>
-                <th>Gender</th>
-                <td><?php echo $row['gender'];?></td>
-                <th>Country of Residence</th>
-                <td><?php echo $row['country'];?></td>
-            </tr>
-            <tr>
-                <th>DOB</th>
-                <td><?php echo $row['dob'];?></td>
-                <th>Nationality</th>
-                <td><?php echo $row['Nationality'];?></td>
-            </tr>
-            <tr>
-                <th>Contact Address</th>
-                <td><?php echo $row['contadd'];?></td>
-                <th>Learning Option</th>
-                <td><?php echo $row['learningOption'];?></td>
-            </tr>
-            <tr>
-                <th>Emergency Name</th>
-                <td><?php echo $row['emergencyName'];?></td>
-                <th>Emergency Contact</th>
-                <td><?php echo $row['emergencyPhone'];?></td>
-            </tr>
-            <tr>
-                <th>Birth Certificate</th>
-                <td><a href="userdocs/<?php echo $row['birthCert'];?>" target="_blank">View File</a></td>
-                <th>LGA Certificate</th>
-                <td><a href="userdocs/<?php echo $row['lgaCert'];?>" target="_blank">View File</a></td>
-            </tr>
-            <tr>
-                <th>Academic Certificate</th>
-                <td><a href="userdocs/<?php echo $row['acadCert'];?>" target="_blank">View File</a></td>
-                <th>Reference Letter</th>
-                <td>
-                    <?php if($row['refLetter']==""){ ?>
-                        NA
-                    <?php } else{ ?>
-                        <a href="userdocs/<?php echo $row['refLetter'];?>" target="_blank">View File</a>
-                    <?php } ?>
-                </td>
-            </tr>
-            <tr>
-                <th>Application fees</th>
-                <td>
-                    <?php if($row['receipt']==""){ ?>
-                        NA
-                    <?php } else{ ?>
-                        <a href="userdocs/<?php echo $row['receipt'];?>" target="_blank">View File</a>
-                    <?php } ?>
-                </td>
-            </tr>
-           
-            <?php endif; ?>
-        </table>
-        
-      </div>
+                <tr>
+                    <th>Applicant Name</th>
+                    <td><?php echo $row['FirstName'] . " " . $row['LastName']; ?></td>
+                </tr>
+                <tr>
+                    <th>Program Applied</th>
+                    <td><?php echo $row['programApplied']; ?></td>
+                    <th>Registration Date</th>
+                    <td><?php echo $row['programApplieddate']; ?></td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td><?php echo $row['gender']; ?></td>
+                    <th>Country of Residence</th>
+                    <td><?php echo $row['country']; ?></td>
+                </tr>
+                <tr>
+                    <th>DOB</th>
+                    <td><?php echo $row['dob']; ?></td>
+                    <th>Nationality</th>
+                    <td><?php echo $row['Nationality']; ?></td>
+                </tr>
+                <tr>
+                    <th>Contact Address</th>
+                    <td><?php echo $row['contadd']; ?></td>
+                    <th>Learning Option</th>
+                    <td><?php echo $row['learningOption']; ?></td>
+                </tr>
+                <tr>
+                    <th>Emergency Name</th>
+                    <td><?php echo $row['emergencyName']; ?></td>
+                    <th>Emergency Contact</th>
+                    <td><?php echo $row['emergencyPhone']; ?></td>
+                </tr>
+                <tr>
+                    <th>Birth Certificate</th>
+                    <td><a href="userdocs/<?php echo $row['birthCert']; ?>" target="_blank">View File</a></td>
+                    <th>LGA Certificate</th>
+                    <td><a href="userdocs/<?php echo $row['lgaCert']; ?>" target="_blank">View File</a></td>
+                </tr>
+                <tr>
+                    <th>Academic Certificate</th>
+                    <td><a href="userdocs/<?php echo $row['acadCert']; ?>" target="_blank">View File</a></td>
+                    <th>Reference Letter</th>
+                    <td>
+                        <?php if($row['refLetter'] == ""): ?>
+                            NA
+                        <?php else: ?>
+                            <a href="userdocs/<?php echo $row['refLetter']; ?>" target="_blank">View File</a>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Application Fees</th>
+                    <td>
+                        <?php if($row['receipt'] == ""): ?>
+                            NA
+                        <?php else: ?>
+                            <a href="userdocs/<?php echo $row['receipt']; ?>" target="_blank">View File</a>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
     <div style="float:right;">
-        <button class="btn btn-primary" style="cursor: pointer;" onClick="CallPrint(this.value)">Print</button>
+    <button class="btn btn-primary" style="cursor: pointer;"  OnClick="CallPrint(this.value)" >Print</button></div>
+    
     </div>
-    <?php 
-        if ($row['AdminStatus']==""){
-    ?>
-    <p style="text-align: center; font-size: 20px;"><a href="edit-appform.php?editid=<?php echo $row['appid'];?>">Edit Details</a></p>
-    <?php 
-        }
-    } // End while loop
+    <?php if($row['AdminStatus'] == ""): ?>
+        <p style="text-align: center; font-size: 20px;"><a href="edit-appform.php?editid=<?php echo $row['appid']; ?>">Edit Details</a></p>
+    <?php endif; ?>
+<?php 
+   }  // End while loop
 } else { 
 ?>
+    <p style="font-size:16px; color:red" align="center">No admission form found.</p>
+    
     <!-- Add your HTML content for form not submitted case here -->
 
 <form name="submit" method="post" enctype="multipart/form-data">        
@@ -666,9 +664,9 @@ if($rw>0) {
       <div class="form-group">
         <select name='programApplied' id="programApplied" class="form-control white_bg" required="true">
           <option value="">-----Select Program Applied-----</option>
-          <option value="Certificate in Theology">Certificate</option>
+          <!-- <option value="Certificate in Theology">Certificate</option>
           <option value="Diploma in Theology">Diploma</option>
-          <option value="Bachelor of Theology">Bachelor of Theology</option>
+          <option value="Bachelor of Theology">Bachelor of Theology</option> -->
           <option value="Postgraduate Degree">Postgraduate degree</option>
           <option value="Master of Divinity">Master of Divinity</option>
           <option value="Master of Theology">Master of Theology</option>
@@ -691,7 +689,7 @@ if($rw>0) {
 </div>
 
 <!-- Document Upload Sections -->
-<div id="docUploadCertDip" style="display:none;">
+<!-- <div id="docUploadCertDip" style="display:none;">
   <div class="row" style="margin-top: 2%">
     <div class="col-xl-12 col-lg-12">
       <h4 class="card-title"><b>Document Upload</b></h4>
@@ -734,9 +732,9 @@ if($rw>0) {
       </fieldset>
     </div>
   </div>
-</div>
+</div> -->
 
-<div id="docUploadBachPost" style="display:none;">
+<!-- <div id="docUploadBachPost" style="display:none;"> -->
   <div class="row" style="margin-top: 2%">
     <div class="col-xl-12 col-lg-12">
       <h4 class="card-title"><b>Document Upload</b></h4>
@@ -779,7 +777,6 @@ if($rw>0) {
       </fieldset>
     </div>
   </div>
-</div>
 
 <div class="row" style="margin-top: 1%">
   
@@ -1101,42 +1098,23 @@ Sort code: 185008<br>
             </div>
           </div>
         </section>
-        <?php } ?>
+        <?php //} ?>
         <!-- Formatter end -->
       </form>  
       </div>
     </div>
   </div>
 <?php include('includes/footer.php');?>
- 
 <script>
-    function CallPrint(strid) {
-        var prtContent = document.getElementById(strid);
-        var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
-        WinPrint.document.write(prtContent.innerHTML);
-        WinPrint.document.close();
-        WinPrint.focus();
-        WinPrint.print();
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('programApplied').addEventListener('change', function() {
-            var value = this.value;
-            var certDipSection = document.getElementById('docUploadCertDip');
-            var bachPostSection = document.getElementById('docUploadBachPost');
-
-            if (value === 'Certificate in Theology' || value === 'Diploma in Theology' || value === 'Bachelor of Theology') {
-                certDipSection.style.display = 'block';
-                bachPostSection.style.display = 'none';
-            } else if (value === 'Postgraduate Degree' || value === 'Master of Divinity' || value === 'Master of Theology') {
-                certDipSection.style.display = 'none';
-                bachPostSection.style.display = 'block';
-            } else {
-                certDipSection.style.display = 'none';
-                bachPostSection.style.display = 'none';
-            }
-        });
-    });
-    </script>
+function CallPrint(strid) {
+var prtContent = document.getElementById("exampl");
+var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+WinPrint.document.write(prtContent.innerHTML);
+WinPrint.document.close();
+WinPrint.focus();
+WinPrint.print();
+}
+</script>
 </body>
 </html>
+<?php }?>

@@ -11,7 +11,7 @@
                 <div class="container">
                   <div class="banner-info-bg mx-auto text-center">
                     <h5>Better Education For A Better World</h5>
-                    <a class="btn btn-secondary btn-theme2 mt-md-5 mt-4" href="contact.php">Contact Now</a>
+                    <a class="btn btn-secondary btn-theme2 mt-md-5 mt-4" href="#contact">Contact Now</a>
                   </div>
 
                 </div>
@@ -40,7 +40,7 @@
                 <div class="container">
                   <div class="banner-info-bg mx-auto text-center">
                     <h5>Exceptional People, Exceptional Care</h5>
-                    <a class="btn btn-secondary btn-theme2 mt-md-5 mt-4" href="about.php">About Us</a>
+                    <a class="btn btn-secondary btn-theme2 mt-md-5 mt-4" href="#about">About Us</a>
                   </div>
                 </div>
               </div>
@@ -54,7 +54,7 @@
                 <div class="container">
                   <div class="banner-info-bg mx-auto text-center">
                     <h5>Explore The World Of Our Graduates</h5>
-                    <a class="btn btn-secondary btn-theme2 mt-md-5 mt-4" href="about.php">Read More</a>
+                    <a class="btn btn-secondary btn-theme2 mt-md-5 mt-4" href="#about">Read More</a>
                   </div>
                 </div>
               </div>
@@ -125,7 +125,7 @@
             <a class="btn btn-secondary btn-theme2 mt-3" href="about.php"> Read More</a>
           </div>
           <div class="column ccont-left col-lg-6">
-            <img src="assets/images/g1.jpg" class="img-responsive" alt="">
+            <img src="assets/images/11.jpg" class="img-responsive" alt="">
           </div>
         </div>
       </div>
@@ -151,6 +151,7 @@
       </div>
     </div>
   </section>
+  
 
   <section class="w3l-price-2" id="news">
     <div class="price-main py-5">
@@ -168,7 +169,7 @@
                     <div class="price-box btn-layout bt6">
                       <div class="grid grid-column-2">
                         <div class="column-6">
-                          <img src="assets/images/g9.jpg" alt="" class="img-fluid">
+                          <img src="assets/images/11.jpg" alt="" class="img-fluid">
                         </div>
                         <div class="column1">
                           <div class="job-info">

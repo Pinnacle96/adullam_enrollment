@@ -4,9 +4,10 @@ error_reporting(0);
 include('includes/dbconnection.php');
 if (isset($_POST['submit'])) {
   $fname = $_POST['firstname'];
-  $mname=$_POST['middlename'];
+  $mname = $_POST['middlename'];
   $lname = $_POST['lastname'];
   $contno = $_POST['contactno'];
+  $degree = $_POST['degree'];
   $email = $_POST['email'];
   $password = md5($_POST['password']);
   $ret = mysqli_query($con, "select Email from tbluser where Email='$email' || MobileNumber='$contno'");
@@ -14,7 +15,7 @@ if (isset($_POST['submit'])) {
   if ($result > 0) {
     echo "<script>alert('This email or Contact Number already associated with another account');</script>";
   } else {
-    $query = mysqli_query($con, "insert into tbluser(FirstName, middleName, LastName,MobileNumber, Email,  Password) value('$fname', '$mname', '$lname','$contno', '$email', '$password' )");
+    $query = mysqli_query($con, "insert into tbluser(FirstName, middleName, LastName, MobileNumber,degree, Email,  Password) value('$fname', '$mname', '$lname','$contno', '$degree', '$email', '$password' )");
     if ($query) {
       echo "<script>alert('You have successfully registered');</script>";
     } else {
@@ -134,7 +135,7 @@ if (isset($_POST['submit'])) {
 
                       </div>
                       <div class="row">
-                         <div class="col-12 col-sm-6 col-md-6">
+                        <div class="col-12 col-sm-6 col-md-6">
                           <fieldset class="form-group position-relative has-icon-left">
                             <input type="text" name="lastname" id="lastname" required="true" class="form-control input-lg" placeholder="Last Name" tabindex="2">
                             <div class="form-control-position">
@@ -144,23 +145,39 @@ if (isset($_POST['submit'])) {
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6">
-                      <fieldset class="form-group position-relative has-icon-left">
-                        <input type="text" name="contactno" id="contactno" class="form-control input-lg" placeholder="Contact Number" required="true" maxlength="20" tabindex="3" required data-validation-required-message="Please enter display name.">
-                        <div class="form-control-position">
-                          <i class="ft-user"></i>
+                          <fieldset class="form-group position-relative has-icon-left">
+                            <input type="text" name="contactno" id="contactno" class="form-control input-lg" placeholder="Contact Number" required="true" maxlength="20" tabindex="3" required data-validation-required-message="Please enter display name.">
+                            <div class="form-control-position">
+                              <i class="ft-user"></i>
+                            </div>
+                            <div class="help-block font-small-3"></div>
+                          </fieldset>
                         </div>
-                        <div class="help-block font-small-3"></div>
-                      </fieldset>
-                    </div>
-                  </div>
-
-                      <fieldset class="form-group position-relative has-icon-left">
-                        <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4" required="true" required data-validation-required-message="Please enter email address.">
-                        <div class="form-control-position">
-                          <i class="ft-mail"></i>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 col-sm-6 col-md-6">
+                          <fieldset class="form-group position-relative has-icon-left">
+                            <select type="text" name="degree" id="degree" class="form-control input-lg" placeholder="Degree type" tabindex="5" required="true" required data-validation-required-message="choose your degree type">
+                              <option value="">Select Degree Type</option>
+                              <option value="Undergraduate">Undergraduate Degree</option>
+                              <option value="Postgraduate">Postgraduate Degree</option>
+                            </select>
+                            <!-- <div class="form-control-position">
+                              <i class="ft-book"></i>
+                            </div> -->
+                            <div class="help-block font-small-3"></div>
+                          </fieldset>
                         </div>
-                        <div class="help-block font-small-3"></div>
-                      </fieldset>
+                        <div class="col-12 col-sm-6 col-md-6">
+                          <fieldset class="form-group position-relative has-icon-left">
+                            <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4" required="true" required data-validation-required-message="Please enter email address.">
+                            <div class="form-control-position">
+                              <i class="ft-mail"></i>
+                            </div>
+                            <div class="help-block font-small-3"></div>
+                          </fieldset>
+                        </div>
+                      </div>
                       <div class="row">
                         <div class="col-12 col-sm-6 col-md-6">
                           <fieldset class="form-group position-relative has-icon-left">

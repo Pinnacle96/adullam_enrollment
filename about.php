@@ -27,7 +27,7 @@
             <?php } ?>
             </div>
             <div class="cwp4-image col-lg-6 pl-lg-5 mt-lg-0 mt-5">
-              <img src="assets/images/g4.jpg" class="img-fluid" alt="" />
+              <img src="assets/images/1.png" class="img-fluid" alt="" />
             </div>
         </div>
       </div>

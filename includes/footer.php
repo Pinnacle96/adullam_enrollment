@@ -19,7 +19,7 @@ if (isset($_POST['sub'])) {
 ?>
 <section class="w3l-footer-29-main">
   <div class="footer-29">
-    <div class="container">
+    <div class="container" id="contact">
       <div class="d-grid grid-col-4 footer-top-29">
         <div class="footer-list-29 footer-1">
           <h6 class="footer-title-29">Contact Us</h6>

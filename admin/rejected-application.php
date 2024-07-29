@@ -69,7 +69,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
         <!-- Input Mask start -->
    
         <!-- Formatter start -->
-<table class="table mb-0">
+< <div class="table-responsive">
+<table class="table table-bordered mb-0">
  <thead>
                 <tr>
                   <th>S.NO</th>
@@ -84,7 +85,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </thead>
   <?php
             
-$ret=mysqli_query($con,"select tbladmapplications.CourseApplied,tbladmapplications.ID as apid,tbladmapplications.AdminStatus, tbluser.FirstName,tbluser.LastName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.ID=tbladmapplications.UserId where tbladmapplications.AdminStatus='2'");
+$ret=mysqli_query($con,"select tbladmapplications.programApplied,tbladmapplications.ID as apid,tbladmapplications.AdminStatus, tbluser.FirstName,tbluser.LastName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.ID=tbladmapplications.UserId where tbladmapplications.AdminStatus='2'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
@@ -92,7 +93,7 @@ while ($row=mysqli_fetch_array($ret)) {
               
                 <tr>
                   <td><?php echo $cnt;?></td>
-                       <td><?php  echo $row['CourseApplied'];?></td>
+                       <td><?php  echo $row['programApplied'];?></td>
                   <td><?php  echo $row['FirstName'];?></td>
                   <td><?php  echo $row['LastName'];?></td>
                    <td><?php  echo $row['MobileNumber'];?></td>
@@ -100,12 +101,12 @@ while ($row=mysqli_fetch_array($ret)) {
          <?php if($row['AdminStatus']==""){ ?>
 
                      <td><?php echo "Not Updated Yet"; ?></td>
-<?php } if($row['AdminStatus']=="1"){ ?>                  <td><?php  echo "Selected";?></td>
+<?php } if($row['AdminStatus']=="1"){ ?>                  <td><?php  echo "Admitted";?></td>
 <?php } if($row['AdminStatus']=="2"){ ?>
-   <td><?php  echo "Rejected";?>
+   <td><?php  echo "Not Admitted";?>
                   </td>
                   <?php } ?>
-                  <td><a href="view-appform.php?aticid=<?php echo $row['apid'];?>" target="_blank">View Details</a></td>
+                  <td><a href="view-appform.php?aticid=<?php echo $row['apid'];?>" target="_blank"><i class="la la-eye"></i></a></td>
                 </tr>
                 <?php 
 $cnt=$cnt+1;
@@ -113,6 +114,7 @@ $cnt=$cnt+1;
 
 
 </table>
+      </div>
 
 
 
