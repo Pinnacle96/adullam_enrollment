@@ -359,15 +359,6 @@ if($rw>0) {
 </div>
 
 <div class="row">
-  <!-- <div class="col-xl-6 col-lg-12">
- <fieldset>
-  <h5>Title</h5>
-   <div class="form-group">
-    <input class="form-control white_bg" id="Adm_no" name="Adm_no"  type="hidden" value="<?php //echo $adm_no; ?>" required>
-    </div>
-</fieldset>
-                   
-</div> -->
 <div class="col-xl-6 col-lg-12">
  <fieldset>
   <h5>Title</h5>
@@ -738,7 +729,7 @@ if($rw>0) {
       <fieldset>
         <h5>Upload Academic Degree Certificate (O'level or it's equivalent)</h5>
         <div class="form-group">
-          <input class="form-control white_bg" id="acadCert" name="acadCert" type="file">
+          <input class="form-control white_bg" id="acadCert" name="acadCert" type="file" required>
         </div>
       </fieldset>
     </div>
@@ -783,7 +774,7 @@ if($rw>0) {
       <fieldset>
         <h5>Upload Academic Degree Certificate (First degree or it's equivalent)</h5>
         <div class="form-group">
-          <input class="form-control white_bg" id="acadCert" name="acadCert" type="file">
+          <input class="form-control white_bg" id="acadCert" name="acadCert" type="file" required>
         </div>
       </fieldset>
     </div>
@@ -1008,7 +999,7 @@ if($rw>0) {
  <fieldset>
   <h5>Would you require accommodation on campus? </h5>
   <div class="form-group"> 
-<select class="form-control white_bg" id="accommodation" name="accommodation" required>
+<select class="form-control white_bg" id="accommodation" name="accommodation">
     <option value="">-----Select Accommodation Option-----</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>
@@ -1094,7 +1085,7 @@ Sort code: 185008<br>
   <fieldset>
  <h5>Upload Payment Receipt</h5>
    <div class="form-group">
-    <input class="form-control white_bg" id="receipt" name="receipt"  type="file" >
+    <input class="form-control white_bg" id="receipt" name="receipt"  type="file" required>
     </div>
 </fieldset>
 </div>
