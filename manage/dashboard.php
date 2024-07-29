@@ -15,9 +15,9 @@ if (strlen($_SESSION['aid']) == 0) {
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
     <!-- Favicons -->
     <link rel="icon" href="../assets/images/favicon/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon.png">
   </head>
 
   <body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">

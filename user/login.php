@@ -2,19 +2,33 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
+
 if (isset($_POST['login'])) {
-  $emailcon = $_POST['emailcont'];
-  $password = md5($_POST['password']);
-  $query = mysqli_query($con, "select ID from tbluser where  (Email='$emailcon' || MobileNumber='$emailcon') && Password='$password' ");
-  $ret = mysqli_fetch_array($query);
-  if ($ret > 0) {
-    $_SESSION['uid'] = $ret['ID'];
-    echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
-  } else {
-    echo "<script>alert('Invalid Details');</script>";
-  }
+    $emailcon = $_POST['emailcont'];
+    $password = md5($_POST['password']);
+
+    // Query to get the ID and degree of the user
+    $query = mysqli_query($con, "SELECT ID, Degree FROM tbluser WHERE (Email='$emailcon' OR MobileNumber='$emailcon') AND Password='$password'");
+    $ret = mysqli_fetch_array($query);
+
+    if ($ret) {
+        $_SESSION['uid'] = $ret['ID'];
+        $degree = $ret['Degree'];
+
+        // Redirect based on the degree
+        if ($degree == 'Undergraduate') {
+            echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
+        } elseif ($degree == 'Postgraduate') {
+            echo "<script type='text/javascript'> document.location ='../pgdt/dashboard.php'; </script>";
+        } else {
+            echo "<script>alert('Degree not recognized');</script>";
+        }
+    } else {
+        echo "<script>alert('Invalid Details');</script>";
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 
