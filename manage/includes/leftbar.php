@@ -5,7 +5,7 @@
         </li>
 
      
-     <li class=" nav-item"><a href="#"><i class="la la-file"></i><span class="menu-title" data-i18n="nav.footers.main">Program</span></a>
+     <!-- <li class=" nav-item"><a href="#"><i class="la la-file"></i><span class="menu-title" data-i18n="nav.footers.main">Program</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="add-course.php" data-i18n="nav.footers.footer_light">Add Program</a>
             </li>
@@ -13,7 +13,7 @@
             </li>
          
           </ul>
-        </li> 
+        </li>  -->
            <li class=" nav-item"><a href="user-detail.php"><i class="la la-users"></i><span class="menu-title" data-i18n="nav.dash.main">Reg. Users</span></a>
         </li> 
 <li class=" nav-item"><a href="#"><i class="la la-file"></i><span class="menu-title" data-i18n="nav.footers.main">Admission application</span></a>
@@ -62,7 +62,7 @@
          
           </ul>
         </li>
-        <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Manage Admin</span></a>
+        <!-- <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Manage Admin</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="signup.php" data-i18n="nav.footers.footer_light">Add New Admin</a>
             </li>
@@ -70,11 +70,11 @@
             </li>
          
           </ul>
-        </li>
+        </li> -->
    <li class=" nav-item"><a href="subscriber.php"><i class="la la-users"></i><span class="menu-title" data-i18n="nav.dash.main">Subscriber</span></a>
-        </li>
+        <!-- </li>
          <li class=" nav-item"><a href="bwdates-report-ds.php"><i class="la la-file"></i><span class="menu-title" data-i18n="nav.dash.main">Reports</span></a>
-        </li>
+        </li> -->
        </ul>
         </li>
       </ul>

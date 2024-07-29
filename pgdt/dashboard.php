@@ -40,10 +40,9 @@ $name=$row['FirstName']." ".$row['middleName']." ".$row['LastName'];
 
 <?php 
 $uid=$_SESSION['uid'];
-$rtp =mysqli_query($con ,"SELECT Adm_no, AdminStatus from pgapplications where UserID='$uid'");
+$rtp =mysqli_query($con ,"SELECT AdminStatus from tbladmapplications where UserID='$uid'");
 $row=mysqli_fetch_array($rtp);
 $adsts=$row['AdminStatus'];
-$ads=$row['Adm_no'];
 if($row>0){
 
 ?>
@@ -60,7 +59,7 @@ if($row>0){
 
 
 <?php if($adsts==1) {?>
-                      <h4 align="center">Your Application <font color="red"> (<?php echo $ads;?> )</font> has been  Approved, a copy of your professional admission letter will be sent to your mail</h4>
+                      <h4 align="center">Your Application has been  Approved, a copy of your professional admission letter will be sent to your mail</h4>
                     <?php } else if($adsts==2) {?>
                       <h4 align="center">Your Application has been  rejected try and reapply in the next admission</h4>
                     <?php } else {?>

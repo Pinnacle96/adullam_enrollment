@@ -159,7 +159,7 @@ while ($row=mysqli_fetch_array($ret)) {
 
 ?>
    <div class="form-group">
-     <input class="form-control white_bg" id="payamt" name="payamt"  type="text"  value="<?php  echo $row['FeeAmount'];?>">
+     <input class="form-control white_bg" id="payamt" name="payamt"  type="text"  value="<?php  echo $row['FeeAmount'];?>" readonly>
    
     </div>
 </fieldset>
@@ -234,7 +234,7 @@ WinPrint.document.close();
 WinPrint.focus();
 WinPrint.print();
 }
-
+</script>
 </body>
 </html>
 <?php  } ?>

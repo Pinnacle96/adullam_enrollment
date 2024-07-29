@@ -3,37 +3,24 @@ session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
 
-if (isset($_POST['login'])) {
-    $adminuser = $_POST['username'];
-    $password = $_POST['password'];
+if(isset($_POST['submit']))
+  {
+    $mobno=$_POST['mobilenumber'];
+    $email=$_POST['email'];
 
-    // Check tbladmin table for MD5 hashed password
-    $query = mysqli_query($con, "SELECT ID, Password FROM tbladmin WHERE AdminuserName='$adminuser'");
-    $ret = mysqli_fetch_array($query);
-
-    if ($ret) {
-        if (md5($password) === $ret['Password']) {
-            $_SESSION['aid'] = $ret['ID'];
-            echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
-        } else {
-            echo "<script>alert('Invalid Details');</script>";
-            echo "<script type='text/javascript'> document.location ='login.php'; </script>";
-        }
-    } else {
-        // Check tblmanage table for bcrypt hashed password
-        $query = mysqli_query($con, "SELECT ID, Password FROM tblmanage WHERE AdminuserName='$adminuser'");
-        $ret = mysqli_fetch_array($query);
-
-        if ($ret && password_verify($password, $ret['Password'])) {
-            $_SESSION['aid'] = $ret['ID'];
-            echo "<script type='text/javascript'> document.location ='../manage/dashboard.php'; </script>";
-        } else {
-            echo "<script>alert('Invalid Details');</script>";
-            echo "<script type='text/javascript'> document.location ='login.php'; </script>";
-        }
+        $query=mysqli_query($con,"select ID from tbladmin where  Email='$email' and  MobileNumber ='$mobno' ");
+    $ret=mysqli_fetch_array($query);
+    if($ret>0){
+      $_SESSION['mobilenumber']=$mobno;
+      $_SESSION['email']=$email;
+     
+     echo "<script type='text/javascript'> document.location ='reset-password.php'; </script>";
     }
-}
-?>
+    else{
+      echo "<script>alert('Invalid Details. Please try again.');</script>";
+    }
+  }
+  ?>
 
 
 
@@ -41,23 +28,19 @@ if (isset($_POST['login'])) {
 
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
-
 <head>
 
-  <title>Admin Login
+  <title>College Admission Management System!!Forgot Password
   </title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700" rel="stylesheet">
-  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
+  rel="stylesheet">
+  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
+  rel="stylesheet">
   <!-- BEGIN VENDOR CSS-->
   <link rel="stylesheet" type="text/css" href="../app-assets/css/vendors.css">
-  <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/forms/icheck/icheck.css">
+  <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/forms/icheck/icheck.css">
   <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/forms/icheck/custom.css">
   <!-- END VENDOR CSS-->
-  <!-- Favicons -->
-  <link rel="icon" href="../assets/images/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
   <!-- BEGIN MODERN CSS-->
   <link rel="stylesheet" type="text/css" href="../app-assets/css/app.css">
   <!-- END MODERN CSS-->
@@ -70,10 +53,9 @@ if (isset($_POST['login'])) {
   <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
   <!-- END Custom CSS-->
 
-
 </head>
-
-<body class="vertical-layout vertical-menu 1-column  bg-cyan bg-lighten-2 menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="1-column">
+<body class="vertical-layout vertical-menu 1-column  bg-cyan bg-lighten-2 menu-expanded fixed-navbar"
+data-open="click" data-menu="vertical-menu" data-col="1-column">
   <!-- fixed-top-->
   <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-dark navbar-shadow">
     <div class="navbar-wrapper">
@@ -82,8 +64,8 @@ if (isset($_POST['login'])) {
           <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
           <li class="nav-item">
             <a class="navbar-brand" href="../index.php">
-
-              <h3 class="brand-text">College Admission Management System | Admin login</h3>
+         
+              <h3 class="brand-text">College Admission Management System  | Recover Password</h3>
             </a>
           </li>
           <li class="nav-item d-md-none">
@@ -95,7 +77,7 @@ if (isset($_POST['login'])) {
         <div class="collapse navbar-collapse justify-content-end" id="navbar-mobile">
           <ul class="nav navbar-nav">
             <li class="nav-item"><a class="nav-link mr-2 nav-link-label" href="../index.php"><i class="ficon ft-arrow-left"></i></a></li>
-
+            
           </ul>
         </div>
       </div>
@@ -112,71 +94,76 @@ if (isset($_POST['login'])) {
             <div class="col-md-4 col-10 box-shadow-2 p-0">
               <div class="card border-grey border-lighten-3 m-0">
                 <div class="card-header border-0 pb-0">
-                  <div class="card-title text-center">
-                    <h4 style="font-weight: bold"> ADULLAM Admin Login</h4>
+                   <div class="card-title text-center">
+              <h4 style="font-weight: bold"> ARC Admin</h4>
                   </div>
                   <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
-                    <span>Login</span>
+                    <span>Recover your password</span>
                   </h6>
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form class="form-horizontal" action="" name="login" method="post">
-
-
-                      <fieldset class="form-group position-relative has-icon-left">
-                        <input type="text" name="username" id="username" class="form-control input-lg" placeholder="Username" required="true">
+                    
+                    <form class="form-horizontal" action=""   method="post" >
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12">
+                          <fieldset class="form-group position-relative has-icon-left">
+                        <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address"
+                        tabindex="4" required="true" required data-validation-required-message="Please enter email address.">
+                        <div class="form-control-position">
+                          <i class="ft-mail"></i>
+                        </div>
+                        <div class="help-block font-small-3"></div>
+                      </fieldset>
+                        </div>
+                      </div>
+                       <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12">
+                          <fieldset class="form-group position-relative has-icon-left">
+                        <input type="text" name="mobilenumber" id="mobilenumber" class="form-control input-lg"
+                        placeholder="Contact Number" required="true" maxlength="10" tabindex="3" required data-validation-required-message="Please enter display name.">
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
                         <div class="help-block font-small-3"></div>
                       </fieldset>
-
-                      <fieldset class="form-group position-relative has-icon-left">
-                        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" required>
-                        <div class="form-control-position">
-                          <i class="la la-key"></i>
                         </div>
-                        <div class="help-block font-small-3"></div>
-                      </fieldset>
-
-
+                       
+                      </div>
+                      
+                    
+                      
+                      
                       <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12">
-                          <button type="submit" name="login" class="btn btn-info btn-lg btn-block"><i class="ft-user"></i> Login</button>
-                        </div>
+                        <div class="col-6 col-sm-6 col-md-6">
+                          <button type="submit" name="submit" class="btn btn-info btn-lg btn-block"><i class="ft-user"></i>Reset</button>
 
+                        </div>    <div class="col-6 col-sm-6 col-md-6">
+                        <a href="login.php" class="btn btn-danger btn-lg btn-block"><i class="ft-unlock"></i> Login</a></div>
                       </div>
-                      <br>
-                      <div class="col-6 col-sm-6 col-md-6">
-                        <p><a href="forget-password.php">Forgot password?</a></p>
-                      </div>
-                      <div class="col-6 col-sm-6 col-md-6">
-                        <p><a href="../index.php">Back Home</a></p>
-                      </div>
+                    </form>
                   </div>
-                  </form>
                 </div>
               </div>
             </div>
           </div>
+        </section>
       </div>
-      </section>
     </div>
-  </div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
   <footer class="footer fixed-bottom footer-dark navbar-border navbar-shadow">
     <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
-      <span class="float-md-left d-block d-md-inline-block">Copyright &copy; <?php echo date('Y'); ?> <a class="text-bold-800 grey darken-2">CAMS </a>, All rights reserved. </span>
+      <span class="float-md-left d-block d-md-inline-block">Copyright &copy; <?php echo date('Y');?> <a class="text-bold-800 grey darken-2">ARC </a>, All rights reserved. </span>
 
     </p>
   </footer>
   <!-- BEGIN VENDOR JS-->
-  <script src="/../app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <script src="../app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
   <!-- BEGIN VENDOR JS-->
   <!-- BEGIN PAGE VENDOR JS-->
-  <script src="../app-assets/vendors/js/forms/validation/jqBootstrapValidation.js" type="text/javascript"></script>
+  <script src="../app-assets/vendors/js/forms/validation/jqBootstrapValidation.js"
+  type="text/javascript"></script>
   <script src="../app-assets/vendors/js/forms/icheck/icheck.min.js" type="text/javascript"></script>
   <!-- END PAGE VENDOR JS-->
   <!-- BEGIN MODERN JS-->
@@ -188,5 +175,4 @@ if (isset($_POST['login'])) {
   <script src="../app-assets/js/scripts/forms/form-login-register.js" type="text/javascript"></script>
   <!-- END PAGE LEVEL JS-->
 </body>
-
 </html>

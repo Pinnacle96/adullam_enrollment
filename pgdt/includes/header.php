@@ -58,7 +58,7 @@
                     $userpic = "default-avatar.png"; // Fallback image
                 } else {
                     $uid = $_SESSION['uid'];
-                    $query = mysqli_query($con, "SELECT tu.FirstName, ta.userpic FROM tbluser tu JOIN pgapplications ta ON tu.ID = ta.UserId WHERE ta.UserId='$uid'");
+                    $query = mysqli_query($con, "SELECT tu.FirstName, ta.userpic FROM tbluser tu JOIN tbladmapplications ta ON tu.ID = ta.UserId WHERE ta.UserId='$uid'");
                     // Check if query was successful
                     if ($query) {
                         $row = mysqli_fetch_array($query);
