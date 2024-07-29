@@ -74,7 +74,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
  <thead>
                 <tr>
                   <th>S.NO</th>
-                  <th>Course Applied</th>
+                  <th>Program Applied</th>
                   <th>First Name</th>
                   <th>Last Name</th>
                    <th>Mobile Number</th>
