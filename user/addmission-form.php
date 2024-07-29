@@ -667,9 +667,6 @@ if($rw > 0) {
          <option value="Certificate in Theology">Certificate</option>
           <option value="Diploma in Theology">Diploma</option>
           <option value="Bachelor of Theology">Bachelor of Theology</option> 
-          <!-- <option value="Postgraduate Degree">Postgraduate degree</option>
-          <option value="Master of Divinity">Master of Divinity</option>
-          <option value="Master of Theology">Master of Theology</option> -->
         </select>
       </div>
     </fieldset>
