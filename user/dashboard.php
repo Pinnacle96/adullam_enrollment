@@ -40,10 +40,9 @@ $name=$row['FirstName']." ".$row['middleName']." ".$row['LastName'];
 
 <?php 
 $uid=$_SESSION['uid'];
-$rtp =mysqli_query($con ,"SELECT Adm_no, AdminStatus from tbladmapplications where UserID='$uid'");
+$rtp =mysqli_query($con ,"SELECT AdminStatus from tbladmapplications where UserID='$uid'");
 $row=mysqli_fetch_array($rtp);
 $adsts=$row['AdminStatus'];
-$ads=$row['Adm_no'];
 if($row>0){
 
 ?>

@@ -17,13 +17,13 @@ if (strlen($_SESSION['uid']) == 0) {
         $title = $_POST['title'];
         $dob = $_POST['dob'];
         $gender = $_POST['gender'];
-        $contadd = isset($_POST['contadd']) ? $_POST['contadd'] : '';
+        $contadd = $_POST['contadd'];
         $city = $_POST['city'];
         $state = $_POST['state'];
         $country = $_POST['country'];
         $postalcode = $_POST['postalcode'];
         $phone = $_POST['phone'];
-        $nationality = isset($_POST['Nationality']) ? $_POST['Nationality'] : '';
+        $nationality = $_POST['Nationality'];
         $salvation = $_POST['salvation'];    
         $conversion = $_POST['conversion'];
         $ministry = $_POST['ministry'];
@@ -1118,35 +1118,34 @@ Sort code: 185008<br>
   </div>
 <?php include('includes/footer.php');?>
  
-       <script>
-function CallPrint(strid) {
-var prtContent = document.getElementById("exampl");
-var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
-WinPrint.document.write(prtContent.innerHTML);
-WinPrint.document.close();
-WinPrint.focus();
-WinPrint.print();
-}
-
-</script>
 <script>
-document.getElementById('programApplied').addEventListener('change', function() {
-  var value = this.value;
-  var certDipSection = document.getElementById('docUploadCertDip');
-  var bachPostSection = document.getElementById('docUploadBachPost');
+    function CallPrint(strid) {
+        var prtContent = document.getElementById(strid);
+        var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+        WinPrint.document.write(prtContent.innerHTML);
+        WinPrint.document.close();
+        WinPrint.focus();
+        WinPrint.print();
+    }
 
-  if (value === 'Certificate in Theology' || value === 'Diploma in Theology' || value === 'Bachelor of Theology') {
-    certDipSection.style.display = 'block';
-    bachPostSection.style.display = 'none';
-  } else if (value === 'Postgraduate Degree' || value === 'Master of Divinity' || value === 'Master of Theology') {
-    certDipSection.style.display = 'none';
-    bachPostSection.style.display = 'block';
-  } else {
-    certDipSection.style.display = 'none';
-    bachPostSection.style.display = 'none';
-  }
-});
-</script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('programApplied').addEventListener('change', function() {
+            var value = this.value;
+            var certDipSection = document.getElementById('docUploadCertDip');
+            var bachPostSection = document.getElementById('docUploadBachPost');
+
+            if (value === 'Certificate in Theology' || value === 'Diploma in Theology' || value === 'Bachelor of Theology') {
+                certDipSection.style.display = 'block';
+                bachPostSection.style.display = 'none';
+            } else if (value === 'Postgraduate Degree' || value === 'Master of Divinity' || value === 'Master of Theology') {
+                certDipSection.style.display = 'none';
+                bachPostSection.style.display = 'block';
+            } else {
+                certDipSection.style.display = 'none';
+                bachPostSection.style.display = 'none';
+            }
+        });
+    });
+    </script>
 </body>
 </html>
-<?php // } ?>
