@@ -11,6 +11,8 @@
         </li>
         <li class=" nav-item"><a href="payment.php"><i class="la la-dollar"></i><span class="menu-title" data-i18n="nav.dash.main">Payment</span></a>
         </li>
+        <li class=" nav-item"><a href="change-password.php"><i class="la la-dollar"></i><span class="menu-title" data-i18n="nav.dash.main">Change Password</span></a>
+        </li>
         <li class=" nav-item"><a href="logout.php"><i class="la la-dollar"></i><span class="menu-title" data-i18n="nav.dash.main">Logout</span></a>
         </li>
 
