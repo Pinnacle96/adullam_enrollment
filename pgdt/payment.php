@@ -58,7 +58,7 @@ if (strlen($_SESSION['uid']==0)) {
       <div class="row">
   <div class="col-xl-12">
     <fieldset>
-      <h5><b>Please pay the $10 non-refundable application processing fee for your application to be processed, and send your proof of payment (transaction receipt or a screenshot of your debit alert) to the following email adullamfees@gmail.com.
+      <h5><b>Please pay the $20 non-refundable application processing fee for your application to be processed, and send your proof of payment (transaction receipt or a screenshot of your debit alert) to the following email adullamfees@gmail.com.
 </b></h5>
       <h6><b>Account Details:</b><br><br>
 <b>NAIRA</b><br><br>

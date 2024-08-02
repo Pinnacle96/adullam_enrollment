@@ -38,7 +38,7 @@ while ($row=mysqli_fetch_array($ret)) {
         <li class="top_li1"><span class="fa fa-envelope-o"></span> <?php  echo $row['Email'];?> </li>
     </div><?php } ?>
     <div class="social-top col-md-3 col-6">
-      <a href="#" class="btn btn-secondary btn-theme4" target="_blank">E-Portal</a>
+      <a href="portal" class="btn btn-secondary btn-theme4" target="_blank">E-Portal</a>
     </div>
   </header>
 </div>
@@ -75,16 +75,23 @@ while ($row=mysqli_fetch_array($ret)) {
             <a class="nav-link" href="notice-details.php">Public Notice</a>
           </li>
          
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Admission
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="user/login.php" target="_blank">Undergraduate Program</a>
         <a class="dropdown-item" href="user/login.php" target="_blank">Postgraduate Program</a>
-        <!-- Add more items as needed -->
+        Add more items as needed 
     </div>
-</li>
+</li> -->
+<li class="nav-item">
+            <a class="nav-link" href="courses.php">Admission</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="lms" target="_blank">LMS</a>
+          </li>
+       
 <li class="nav-item">
             <a class="nav-link" href="admin/login.php" target="_blank">Administrator</a>
           </li>
