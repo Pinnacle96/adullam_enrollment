@@ -21,7 +21,7 @@ if (strlen($_SESSION['uid']) == 0) {
         $files = ['birthCert', 'lgaCert', 'refLetter', 'acadCert'];
 
         // Handle file uploads
-        $uploadDir = './uploads/';
+        $uploadDir = '..user/uploads/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
@@ -146,7 +146,7 @@ if (strlen($_SESSION['uid']) == 0) {
 					</div>
 					<div class="col-xl-6 col-lg-4">
 
-						<h5>Upload Academic Degree Certificate (First degree or it's equivalent)</h5>
+						<h5>Upload Academic Degree Certificate (Diploma degree or it's equivalent)</h5>
 						<div class="form-group">
 							<input class="form-control white_bg" id="acadCert" name="acadCert" type="file" >
 						</div>

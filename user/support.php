@@ -146,7 +146,7 @@ if (strlen($_SESSION['uid']) == 0) {
 					</div>
 					<div class="col-xl-6 col-lg-4">
 
-						<h5>Upload Academic Degree Certificate (First degree or it's equivalent)</h5>
+						<h5>Upload Academic Degree Certificate (O'level or it's equivalent)</h5>
 						<div class="form-group">
 							<input class="form-control white_bg" id="acadCert" name="acadCert" type="file" >
 						</div>

@@ -32,7 +32,7 @@ if (strlen($_SESSION['uid']) == 0) {
         // Handle file upload if any
         if (isset($_FILES['userpic']) && $_FILES['userpic']['error'] == UPLOAD_ERR_OK) {
             // Create upload directory if it doesn't exist
-            $uploadDir = './uploads/';
+            $uploadDir = '..user/uploads/';
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);
             }

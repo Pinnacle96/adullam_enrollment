@@ -21,7 +21,7 @@ if (strlen($_SESSION['uid']) == 0) {
         $files = ['birthCert', 'lgaCert', 'refLetter', 'acadCert'];
 
         // Handle file uploads
-        $uploadDir = './uploads/';
+        $uploadDir = '..user/uploads/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }

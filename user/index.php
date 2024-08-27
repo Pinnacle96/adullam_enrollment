@@ -50,12 +50,12 @@ if (isset($_POST['submit'])) {
                 $degree = $row['program'];
 
                 // Redirect based on the degree
-                if ($degree == 'Certificate in Theology' || 'Diploma in Theology' || 'Bachelor of Divinity') {
-                    echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
-                } elseif ($degree == 'Postgraduate Diploma' || 'Masters') {
-                    echo "<script type='text/javascript'> document.location ='../pgdt/dashboard.php'; </script>";
+                if ($degree == 'Certificate in Theology' || $degree == 'Diploma in Theology' || $degree == 'Bachelor of Divinity') {
+                    echo "<script type='text/javascript'> document.location ='addmission-form'; </script>";
+                } elseif ($degree == 'Postgraduate Diploma' || $degree == 'Masters') {
+                    echo "<script type='text/javascript'> document.location ='../pgdt/addmission-form.php'; </script>";
                 }elseif ($degree == 'Short Course') {
-                    echo "<script type='text/javascript'> document.location ='../short/dashboard.php'; </script>";
+                    echo "<script type='text/javascript'> document.location ='../short/addmission-form'; </script>";
                 } else { 
                     echo "<script>alert('Degree not recognized');</script>";
                 }

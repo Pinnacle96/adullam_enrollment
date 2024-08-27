@@ -8,8 +8,9 @@ include('includes/dbconnection.php');
 // Check if user is logged in
 if (strlen($_SESSION['uid']) == 0) {
     header('location:logout.php');
-   
-}else{
+    exit; // Added exit to stop further execution
+} else {
+    $uid = $_SESSION['uid'];
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
@@ -28,23 +29,28 @@ if (strlen($_SESSION['uid']) == 0) {
         <div class="content-wrapper">
             <div class="content-header row"></div>
             <div class="content-body">
-            <?php
-$uid=$_SESSION['uid'];
-$ret=mysqli_query($con,"select fname from tbluser where id='$uid'");
-$row=mysqli_fetch_array($ret);
-$name=$row['fname'];
-
-?>
-                <h3><font color="red">Welcome Back :</font> <?php echo $name; ?> </h3>
+                <?php
+                $ret = mysqli_query($con, "SELECT fname FROM tbluser WHERE id='$uid'");
+                if ($ret) {
+                    $row = mysqli_fetch_array($ret);
+                    $name = $row['fname'];
+                } else {
+                    $name = "User"; // Default value if query fails
+                }
+                ?>
+                <h3><font color="red">Welcome Back :</font> <?php echo htmlspecialchars($name); ?> </h3>
                 <hr />
 
                 <?php
-                $uid=$_SESSION['uid'];
-                $rtp =mysqli_query($con ,"SELECT AdminStatus from tbladmission where userid='$uid'");
-                $row=mysqli_fetch_array($rtp);
-                $adsts=$row['AdminStatus'];
-                if($row>0){
-                
+                $rtp = mysqli_query($con, "SELECT AdminStatus FROM tbladmission WHERE userid='$uid'");
+                if ($rtp) {
+                    $row = mysqli_fetch_array($rtp);
+                    $adsts = isset($row['AdminStatus']) ? $row['AdminStatus'] : '';
+                } else {
+                    $adsts = ''; // Default value if query fails
+                }
+
+                if ($adsts !== '') {
                 ?>
                     <div class="row">
                         <div class="col-xl-10 col-lg-6 col-12">
