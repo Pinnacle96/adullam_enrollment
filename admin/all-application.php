@@ -1,21 +1,23 @@
 <?php  
 session_start();
-error_reporting(0);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 include('includes/dbconnection.php');
 if (strlen($_SESSION['aid']) == 0) {
   header('location:logout.php');
 } else {
 
   // Fetch all applications
-  $query = "SELECT tbladmapplications.programApplied, tbladmapplications.AdminStatus, tbladmapplications.ID as apid, tbluser.FirstName, tbluser.LastName, tbluser.MobileNumber, tbluser.Email 
-            FROM tbladmapplications 
-            INNER JOIN tbluser ON tbluser.ID = tbladmapplications.UserId";
+  $query = "SELECT tbladmission.AdminStatus, tbladmission.id as apid, tbluser.fname, tbluser.lname, tbluser.program, tbluser.learningmode, tbluser.email 
+            FROM tbladmission 
+            INNER JOIN tbluser ON tbluser.id = tbladmission.userid";
   $result = mysqli_query($con, $query);
 
   // Group data by program
   $programs = [];
   while ($row = mysqli_fetch_array($result)) {
-    $program = $row['programApplied'];
+    $program = $row['program'];
     if (!isset($programs[$program])) {
       $programs[$program] = [];
     }
@@ -65,7 +67,8 @@ if (strlen($_SESSION['aid']) == 0) {
                   <th>S.NO</th>
                   <th>First Name</th>
                   <th>Last Name</th>
-                  <th>Mobile Number</th>
+                  <th>Program</th>
+                  <th>Learning Mode</th>
                   <th>Email</th>
                   <th>Status</th>
                   <th>Action</th>
@@ -78,10 +81,11 @@ if (strlen($_SESSION['aid']) == 0) {
                 ?>
                   <tr>
                     <td><?php echo $cnt; ?></td>
-                    <td><?php echo htmlspecialchars($applicant['FirstName']); ?></td>
-                    <td><?php echo htmlspecialchars($applicant['LastName']); ?></td>
-                    <td><?php echo htmlspecialchars($applicant['MobileNumber']); ?></td>
-                    <td><?php echo htmlspecialchars($applicant['Email']); ?></td>
+                    <td><?php echo htmlspecialchars($applicant['fname']); ?></td>
+                    <td><?php echo htmlspecialchars($applicant['lname']); ?></td>
+                    <td><?php echo htmlspecialchars($applicant['program']); ?></td>
+                    <td><?php echo htmlspecialchars($applicant['learningmode']); ?></td>
+                    <td><?php echo htmlspecialchars($applicant['email']); ?></td>
                     <?php if ($applicant['AdminStatus'] == "") { ?>
                       <td><?php echo "Not Updated Yet"; ?></td>
                     <?php } if ($applicant['AdminStatus'] == "1") { ?>

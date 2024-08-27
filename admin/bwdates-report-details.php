@@ -49,11 +49,11 @@ if (strlen($_SESSION['aid']) == 0) {
 
                     <?php
                     // Prepare and execute the SQL query
-                    $stmt = $con->prepare("SELECT tblfees.ID AS feesid, tbladmapplications.programApplied, tbladmapplications.ID AS apid, tbladmapplications.AdminStatus, tbladmapplications.AdminRemarkDate, tbluser.FirstName, tbluser.LastName, tbluser.MobileNumber, tbluser.Email 
-                                            FROM tbladmapplications 
-                                            INNER JOIN tbluser ON tbluser.ID = tbladmapplications.UserId 
-                                            LEFT JOIN tblfees ON tblfees.UserID = tbladmapplications.UserID 
-                                            WHERE tbladmapplications.AdminStatus = '1' AND tbladmapplications.AdminRemarkDate BETWEEN ? AND ?");
+                    $stmt = $con->prepare("SELECT tblfees.ID AS feesid, tbladmission.id AS apid, tbladmission.AdminStatus, tbladmission.AdminRemarkDate, tbluser.fname, tbluser.lname, tbluser.program, tbluser.email 
+                                            FROM tbladmission 
+                                            INNER JOIN tbluser ON tbluser.ID = tbladmission.UserId 
+                                            LEFT JOIN tblfees ON tblfees.UserID = tbladmission.UserID 
+                                            WHERE tbladmission.AdminStatus = '1' AND tbladmission.AdminRemarkDate BETWEEN ? AND ?");
                     $stmt->bind_param("ss", $fdate, $tdate);
                     $stmt->execute();
                     $result = $stmt->get_result();
@@ -65,7 +65,7 @@ if (strlen($_SESSION['aid']) == 0) {
 
                         // Fetch results and group by program
                         while ($row = $result->fetch_assoc()) {
-                            $program = $row['programApplied'];
+                            $program = $row['program'];
                             if (!isset($programs[$program])) {
                                 $programs[$program] = [];
                             }
@@ -83,7 +83,7 @@ if (strlen($_SESSION['aid']) == 0) {
                                             <th>S.NO</th>
                                             <th>First Name</th>
                                             <th>Last Name</th>
-                                            <th>Mobile Number</th>
+                                            <th>Program</th>
                                             <th>Email</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -96,10 +96,10 @@ if (strlen($_SESSION['aid']) == 0) {
                                             ?>
                                             <tr>
                                                 <td><?php echo $cnt; ?></td>
-                                                <td><?php echo htmlspecialchars($row['FirstName']); ?></td>
-                                                <td><?php echo htmlspecialchars($row['LastName']); ?></td>
-                                                <td><?php echo htmlspecialchars($row['MobileNumber']); ?></td>
-                                                <td><?php echo htmlspecialchars($row['Email']); ?></td>
+                                                <td><?php echo htmlspecialchars($row['fname']); ?></td>
+                                                <td><?php echo htmlspecialchars($row['lname']); ?></td>
+                                                <td><?php echo htmlspecialchars($row['program']); ?></td>
+                                                <td><?php echo htmlspecialchars($row['email']); ?></td>
                                                 <td>
                                                     <?php
                                                     if ($row['AdminStatus'] == "") {

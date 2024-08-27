@@ -58,7 +58,7 @@
                 </div>
             </li>
 
-            <?php $qury = mysqli_query($con, "SELECT  tbladmapplications.ID as appid,tbluser.FirstName,tbladmapplications.programApplieddate from tbladmapplications join tbluser on tbluser.ID=tbladmapplications.UserId where tbladmapplications.AdminStatus is null");
+            <?php $qury = mysqli_query($con, "SELECT  tbladmission.id as appid,tbluser.fname,tbladmission.programApplieddate from tbladmission join tbluser on tbluser.id=tbladmission.userid where tbladmission.AdminStatus is null");
             $num = mysqli_num_rows($qury);
             ?>
 

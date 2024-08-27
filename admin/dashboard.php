@@ -1,6 +1,8 @@
 <?php
 session_start();
-error_reporting(0);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 include('includes/dbconnection.php');
 if (strlen($_SESSION['aid']) == 0) {
   header('location:logout.php');
@@ -92,7 +94,7 @@ if (strlen($_SESSION['aid']) == 0) {
                       <div class="media d-flex">
                         <div class="media-body text-left">
                           <?php
-                          $ter = mysqli_query($con, "SELECT ID from tbladmapplications");
+                          $ter = mysqli_query($con, "SELECT id from tbladmission");
                           $cntapp = mysqli_num_rows($ter);
                           ?>
 
@@ -121,7 +123,7 @@ if (strlen($_SESSION['aid']) == 0) {
                       <div class="media d-flex">
                         <div class="media-body text-left">
                           <?php
-                          $rtp = mysqli_query($con, "SELECT ID from tbladmapplications where AdminStatus is null");
+                          $rtp = mysqli_query($con, "SELECT id from tbladmission where AdminStatus is null");
                           $penapp = mysqli_num_rows($rtp);
                           ?>
                           <h3 class="info"><?php echo $penapp; ?></h3>
@@ -147,7 +149,7 @@ if (strlen($_SESSION['aid']) == 0) {
                       <div class="media d-flex">
                         <div class="media-body text-left">
                           <?php
-                          $yui = mysqli_query($con, "SELECT ID from tbladmapplications where AdminStatus='1'");
+                          $yui = mysqli_query($con, "SELECT id from tbladmission where AdminStatus='1'");
                           $selapp = mysqli_num_rows($yui);
                           ?>
                           <h3 class="warning"><?php echo $selapp; ?></h3>
@@ -173,7 +175,7 @@ if (strlen($_SESSION['aid']) == 0) {
                       <div class="media d-flex">
                         <div class="media-body text-left">
                           <?php
-                          $poi = mysqli_query($con, "SELECT ID from tbladmapplications where AdminStatus='2'");
+                          $poi = mysqli_query($con, "SELECT id from tbladmission where AdminStatus='2'");
                           $rejapp = mysqli_num_rows($poi);
                           ?>
                           <h3 class="success"><?php echo $rejapp; ?></h3>

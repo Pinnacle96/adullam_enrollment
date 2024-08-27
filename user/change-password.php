@@ -1,197 +1,103 @@
 <?php
 
-session_start();
-error_reporting(0);
-include('includes/dbconnection.php');
-error_reporting(0);
-if (strlen($_SESSION['uid']==0)) {
-  header('location:logout.php');
-  } else{
+$msg = "";
 
-if(isset($_POST['submit']))
-{
-$userid=$_SESSION['uid'];
-$cpassword=md5($_POST['currentpassword']);
-$newpassword=md5($_POST['newpassword']);
-$query=mysqli_query($con,"select ID from tbluser where ID='$userid' and   Password='$cpassword'");
-$row=mysqli_fetch_array($query);
-if($row>0){
-$ret=mysqli_query($con,"update tbluser set Password='$newpassword' where ID='$userid'");
+include 'config.php';
 
-echo '<script>alert("Your password successully changed")</script>';
+if (isset($_GET['reset'])) {
+    if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE code='{$_GET['reset']}'")) > 0) {
+        if (isset($_POST['submit'])) {
+            $password = mysqli_real_escape_string($conn, md5($_POST['password']));
+            $confirm_password = mysqli_real_escape_string($conn, md5($_POST['confirm-password']));
+
+            if ($password === $confirm_password) {
+                $query = mysqli_query($conn, "UPDATE users SET password='{$password}', code='' WHERE code='{$_GET['reset']}'");
+
+                if ($query) {
+                    header("Location: index.php");
+                }
+            } else {
+                $msg = "<div class='alert alert-danger'>Password and Confirm Password do not match.</div>";
+            }
+        }
+    } else {
+        $msg = "<div class='alert alert-danger'>Reset Link do not match.</div>";
+    }
 } else {
-
-
-echo '<script>alert("Your current password is wrong")</script>';
+    header("Location: forgot-password.php");
 }
 
+?>
 
-
-}
-
-
-  ?>
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
+<html lang="zxx">
+
 <head>
+    <title>Login Form - Brave Coder</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords"
+        content="Login Form" />
+    <!-- //Meta tag Keywords -->
 
-  <title>College Admission Management System | Change Password</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
-  rel="stylesheet">
-  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
-  rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-     <style>
-    .errorWrap {
-    padding: 10px;
-    margin: 20px 0 0px 0;
-    background: #fff;
-    border-left: 4px solid #dd3d36;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-}
-.succWrap{
-    padding: 10px;
-    margin: 0 0 20px 0;
-    background: #fff;
-    border-left: 4px solid #5cb85c;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-}
-    </style>
-<script type="text/javascript">
-function checkpass()
-{
-if(document.changepassword.newpassword.value!=document.changepassword.confirmpassword.value)
-{
-alert('New Password and Confirm Password field does not match');
-document.changepassword.confirmpassword.focus();
-return false;
-}
-return true;
-}   
+    <!--/Style-CSS -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <!--//Style-CSS -->
 
-</script>
+    <script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
 
 </head>
-<body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar"
-data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
-<?php include('includes/header.php');?>
-<?php include('includes/leftbar.php');?>
-  <div class="app-content content">
-    <div class="content-wrapper">
-      <div class="content-header row">
-        <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-          <h3 class="content-header-title mb-0 d-inline-block">
-           Change Password
-          </h3>
-          <div class="row breadcrumbs-top d-inline-block">
-            <div class="breadcrumb-wrapper col-12">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a>
-                </li>
-            
-                </li>
-                <li class="breadcrumb-item active">Change Password
-                </li>
-              </ol>
+
+<body>
+
+    <!-- form section start -->
+    <section class="w3l-mockup-form">
+        <div class="container">
+            <!-- /form -->
+            <div class="workinghny-form-grid">
+                <div class="main-mockup">
+                    <div class="alert-close">
+                        <span class="fa fa-close"></span>
+                    </div>
+                    <div class="w3l_form align-self">
+                        <div class="left_grid_info">
+                            <img src="images/image3.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="content-wthree">
+                        <h2>Change Password</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                        <?php echo $msg; ?>
+                        <form action="" method="post">
+                            <input type="password" class="password" name="password" placeholder="Enter Your Password" required>
+                            <input type="password" class="confirm-password" name="confirm-password" placeholder="Enter Your Confirm Password" required>
+                            <button name="submit" class="btn" type="submit">Change Password</button>
+                        </form>
+                        <div class="social-icons">
+                            <p>Back to! <a href="index.php">Login</a>.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <!-- //form -->
         </div>
-   
-      </div>
-      <div class="content-body">
-        <!-- Input Mask start -->
-   
-        <!-- Formatter start -->
+    </section>
+    <!-- //form section start -->
 
-<form method="post"  name="changepassword" onsubmit="return checkpass();">        
-        <section class="formatter" id="formatter">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title">Change Password</h4>
- 
-                  <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                  
-                      <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                      <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                      
-                    </ul>
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-xl-6 col-lg-12">
-                        <fieldset>
-                          <h5>Current Password
-                          
-                          </h5>
-                          <div class="form-group">
-
-   <input class="form-control white_bg" id="currentpassword" name="currentpassword"  type="password" required="true">
-                          </div>
-                        </fieldset>
-                   
-                      </div>
-                    </div>
-
-  <div class="row">
-                      <div class="col-xl-6 col-lg-12">
-                        <fieldset>
-                          <h5>New Password
-                         
-                          </h5>
-                          <div class="form-group">
-
-  <input class="form-control white_bg" id="newpassword" type="password" name="newpassword" required="true">
-                          </div>
-                        </fieldset>
-                      </div>
-                    </div>
-
-  <div class="row">
-                      <div class="col-xl-6 col-lg-12">
-                        <fieldset>
-                          <h5>Confirm Password
-                         
-                          </h5>
-                          <div class="form-group">
- <input class="form-control white_bg" id="confirmpassword" type="password" name="confirmpassword"  required="true">
-                          </div>
-                        </fieldset>
-                      </div>
-                    </div>
-
-
-<div class="row">
-<div class="col-xl-6 col-lg-12">
-<button type="submit" name="submit" class="btn btn-info btn-min-width mr-1 mb-1">Change</button>
-</div>
-</div>
-
-
-
- </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- Formatter end -->
-      </form>  
-     
-
-      </div>
-    </div>
-  </div>
-  <!-- ////////////////////////////////////////////////////////////////////////////-->
-<?php include('includes/footer.php');?>
-  <!-- BEGIN VENDOR JS-->
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function (c) {
+            $('.alert-close').on('click', function (c) {
+                $('.main-mockup').fadeOut('slow', function (c) {
+                    $('.main-mockup').remove();
+                });
+            });
+        });
+    </script>
 
 </body>
+
 </html>
-<?php }  ?>

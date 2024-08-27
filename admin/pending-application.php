@@ -73,17 +73,17 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
  <thead>
                 <tr>
                   <th>S.NO</th>
-                  <th>Program Applied</th>
                   <th>First Name</th>
                   <th>Last Name</th>
-                   <th>Mobile Number</th>
+                  <th>Program Applied</th>
+                  <th>Learning Mode</th>
                    <th>Email</th>
                    <th>Action</th>
                 </tr>
               </thead>
   <?php
             
-$ret=mysqli_query($con,"select tbladmapplications.programApplied,tbladmapplications.ID as apid, tbluser.FirstName,tbluser.LastName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.ID=tbladmapplications.UserId where tbladmapplications.AdminStatus is null");
+$ret=mysqli_query($con,"select tbladmission.id as apid, tbluser.fname,tbluser.lname,tbluser.program,tbluser.learningmode,tbluser.email from  tbladmission inner join tbluser on tbluser.id=tbladmission.userid where tbladmission.AdminStatus is null");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
@@ -91,11 +91,11 @@ while ($row=mysqli_fetch_array($ret)) {
               
                 <tr>
                   <td><?php echo $cnt;?></td>
-                       <td><?php  echo $row['programApplied'];?></td>
-                  <td><?php  echo $row['FirstName'];?></td>
-                  <td><?php  echo $row['LastName'];?></td>
-                   <td><?php  echo $row['MobileNumber'];?></td>
-                    <td><?php  echo $row['Email'];?></td>
+                       <td><?php  echo $row['fname'];?></td>
+                  <td><?php  echo $row['lname'];?></td>
+                  <td><?php  echo $row['program'];?></td>
+                  <td><?php  echo $row['learningmode'];?></td>
+                    <td><?php  echo $row['email'];?></td>
          
                   <td><a href="view-appform.php?aticid=<?php echo $row['apid'];?>" target="_blank">View Details</a></td>
                 </tr>

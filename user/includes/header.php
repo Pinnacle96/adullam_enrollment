@@ -58,13 +58,13 @@
                     $userpic = "default-avatar.png"; // Fallback image
                 } else {
                     $uid = $_SESSION['uid'];
-                    $query = mysqli_query($con, "SELECT tu.FirstName, ta.userpic FROM tbluser tu JOIN tbladmapplications ta ON tu.ID = ta.UserId WHERE ta.UserId='$uid'");
+                    $query = mysqli_query($con, "SELECT tu.fname, ta.userpic FROM tbluser tu JOIN tbladmission ta ON tu.id = ta.userid WHERE ta.userid='$uid'");
                     // Check if query was successful
                     if ($query) {
                         $row = mysqli_fetch_array($query);
                         // Handle cases where no results are returned
                         if ($row) {
-                            $name = $row['FirstName'];
+                            $name = $row['fname'];
                             $userpic = $row['userpic'] ? $row['userpic'] : "default-avatar.png"; // Fallback image if userpic is empty
                         } else {
                             $name = "User";
@@ -80,7 +80,7 @@
                 <span class="user-name text-bold-700"><?php echo htmlspecialchars($name); ?></span>
               </span>
               <span class="avatar avatar-online">
-                <img src="userimages/<?php echo htmlspecialchars($userpic); ?>" alt="user avatar">
+                <img src="uploads/<?php echo htmlspecialchars($userpic); ?>" alt="user avatar">
                 <i></i>
               </span>
             </a>

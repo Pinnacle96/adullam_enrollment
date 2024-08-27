@@ -1,6 +1,8 @@
 <?php  
 session_start();
-error_reporting(0);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 include('includes/dbconnection.php');
 if (strlen($_SESSION['aid']==0)) {
   header('location:logout.php');
@@ -69,23 +71,23 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
         <!-- Input Mask start -->
    
         <!-- Formatter start -->
-< <div class="table-responsive">
+ <div class="table-responsive">
 <table class="table table-bordered mb-0">
  <thead>
                 <tr>
                   <th>S.NO</th>
                   <th>Program Applied</th>
+                  <th>Learning Option</th>
                   <th>First Name</th>
                   <th>Last Name</th>
-                   <th>Mobile Number</th>
-                   <th>Email</th>
+                  <th>Email</th>
                    <th>Status</th>
                    <th>Action</th>
                 </tr>
               </thead>
   <?php
             
-$ret=mysqli_query($con,"select tbladmapplications.programApplied,tbladmapplications.ID as apid,tbladmapplications.AdminStatus, tbluser.FirstName,tbluser.LastName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.ID=tbladmapplications.UserId where tbladmapplications.AdminStatus='2'");
+$ret=mysqli_query($con,"select tbladmission.id as apid,tbladmission.AdminStatus, tbluser.fname,tbluser.lname,tbluser.program, tbluser.learningmode,tbluser.email from  tbladmission inner join tbluser on tbluser.id=tbladmission.userid where tbladmission.AdminStatus='2'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
@@ -93,11 +95,11 @@ while ($row=mysqli_fetch_array($ret)) {
               
                 <tr>
                   <td><?php echo $cnt;?></td>
-                       <td><?php  echo $row['programApplied'];?></td>
-                  <td><?php  echo $row['FirstName'];?></td>
-                  <td><?php  echo $row['LastName'];?></td>
-                   <td><?php  echo $row['MobileNumber'];?></td>
-                    <td><?php  echo $row['Email'];?></td>
+                       <td><?php  echo $row['program'];?></td>
+                       <td><?php  echo $row['learningmode'];?></td>
+                  <td><?php  echo $row['fname'];?></td>
+                  <td><?php  echo $row['lname'];?></td>
+                  <td><?php  echo $row['email'];?></td>
          <?php if($row['AdminStatus']==""){ ?>
 
                      <td><?php echo "Not Updated Yet"; ?></td>

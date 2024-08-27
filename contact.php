@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
                   <div class="cont-add-rgt">
                     <h4>Phone:</h4>
                     <a href="tel<?php echo $row['MobileNumber']; ?>">
-                      <p class="contact-text-sub"><?php echo $row['MobileNumber']; ?></p>
+                      <p class="contact-text-sub">+234 <?php echo $row['MobileNumber']; ?></p>
                     </a>
                   </div>
                   <div class="cont-add-lft">

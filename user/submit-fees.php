@@ -1,6 +1,8 @@
 <?php
 session_start();
-error_reporting(0);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 include('includes/dbconnection.php');
 if (strlen($_SESSION['uid']==0)) {
   header('location:logout.php');
@@ -89,7 +91,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
         <!-- Formatter start -->
 <?php 
 $stuid=$_SESSION['uid'];
-$ret=mysqli_query($con,"select AdminStatus from  tbladmapplications join tbluser on tbluser.ID=tbladmapplications.UserID where tbluser.ID='$stuid'");
+$ret=mysqli_query($con,"select AdminStatus from  tbladmission join tbluser on tbluser.id=tbladmission.userid where tbluser.id='$stuid'");
 $num=mysqli_fetch_array($ret);
 $adstatus=$num['AdminStatus'];
 if($num>0 && $adstatus=='1' )
@@ -153,7 +155,7 @@ while($row=mysqli_fetch_array($query)){
   <h5>Payment Amount</h5>
   <?php
 $uid=$_SESSION['uid'];
-$ret=mysqli_query($con,"select * from  tbladmapplications where UserId='$uid'");
+$ret=mysqli_query($con,"select * from  tbladmission where userid='$uid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 

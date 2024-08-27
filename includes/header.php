@@ -38,7 +38,7 @@ while ($row=mysqli_fetch_array($ret)) {
         <li class="top_li1"><span class="fa fa-envelope-o"></span> <?php  echo $row['Email'];?> </li>
     </div><?php } ?>
     <div class="social-top col-md-3 col-6">
-      <a href="#portal" class="btn btn-secondary btn-theme4" target="_blank">E-Portal</a>
+      <a href="portal" class="btn btn-secondary btn-theme4" target="_blank">E-Portal</a>
     </div>
   </header>
 </div>
