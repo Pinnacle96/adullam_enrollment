@@ -19,6 +19,11 @@ error_reporting(0);
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/images//favicon/favicon.png">
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style-starter.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/boxicons.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
   </head>
 
 <body><!-- Top Menu 1 -->
@@ -37,9 +42,9 @@ while ($row=mysqli_fetch_array($ret)) {
         <li class="top_li"><span class="fa fa-phone"></span>+234<?php  echo $row['MobileNumber'];?></li>
         <li class="top_li1"><span class="fa fa-envelope-o"></span> <?php  echo $row['Email'];?> </li>
     </div><?php } ?>
-    <div class="social-top col-md-3 col-6">
+    <!-- <div class="social-top col-md-3 col-6">
       <a href="portal" class="btn btn-secondary btn-theme4" target="_blank">E-Portal</a>
-    </div>
+    </div> -->
   </header>
 </div>
 </div>
@@ -61,18 +66,61 @@ while ($row=mysqli_fetch_array($ret)) {
           <li class="nav-item">
             <a class="nav-link" href="index.php">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.php">About</a>
-          </li>
-            <li class="nav-item">
+          <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        About Us
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="about.php" >What we Stand for</a>
+        <a class="dropdown-item" href="#history.php" >History</a>
+        <a class="dropdown-item" href="#vision.php" >Mision and Vision</a>
+        <a class="dropdown-item" href="#doctrine.php" >Doctrinal Statement</a>
+        <a class="dropdown-item" href="#management.php" >management and faculty</a>
+        
+        
+    </div>
+</li>
+         
+
+          <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Academics
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="cert.php" >Certificate in Theology</a>
+        <a class="dropdown-item" href="dip.php" >Diploma in Theology</a>
+        <a class="dropdown-item" href="biv.php" >Bachelor of Divinity</a>
+        <a class="dropdown-item" href="pgdt.php" >Postgraduate Diploma</a>
+        <a class="dropdown-item" href="masters.php" >Masters</a>
+        <a class="dropdown-item" href="short.php" >Short Course</a>
+        
+    </div>
+</li>
+            <!-- <li class="nav-item">
             <a class="nav-link" href="courses.php">Program</a>
-          </li>
+          </li> -->
         
           <li class="nav-item">
             <a class="nav-link" href="contact.php">Contact</a>
           </li>
+          <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Student Life
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#chapel.php" >Chapel</a>
+        <a class="dropdown-item" href="#student.php" >Student Ministry</a>
+        <a class="dropdown-item" href="#counseling.php" >Counseling</a>
+        <a class="dropdown-item" href="#discipleship.php" >discipleship</a>
+        <a class="dropdown-item" href="#mission.php" >Mission</a>
+        <a class="dropdown-item" href="#sport.php" >Sport</a>
+   </div>
+</li>
           <li class="nav-item">
             <a class="nav-link" href="notice-details.php">Public Notice</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="partner.php">Partnership</a>
           </li>
          
           <!-- <li class="nav-item dropdown">
@@ -85,7 +133,7 @@ while ($row=mysqli_fetch_array($ret)) {
         Add more items as needed 
     </div>
 </li> -->
-<li class="nav-item">
+<!-- <li class="nav-item">
             <a class="nav-link" href="courses.php">Admission</a>
           </li>
           <li class="nav-item">
@@ -94,7 +142,7 @@ while ($row=mysqli_fetch_array($ret)) {
        
 <li class="nav-item">
             <a class="nav-link" href="admin/login.php" target="_blank">Administrator</a>
-          </li>
+          </li> -->
         </ul>
        
       </div>

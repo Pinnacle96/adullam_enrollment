@@ -40,7 +40,7 @@ if (isset($_POST['sub'])) {
             <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
             <a href="#twitter" class="twitter"><span class="fa fa-twitter"></span></a>
             <a href="#instagram" class="instagram"><span class="fa fa-instagram"></span></a>
-            <a href="#google-plus" class="google-plus"><span class="fa fa-google-plus"></span></a>
+            <!-- <a href="#google-plus" class="google-plus"><span class="fa fa-google-plus"></span></a> -->
             <a href="#linkedin" class="linkedin"><span class="fa fa-linkedin"></span></a>
           </div>
         </div>
@@ -50,10 +50,8 @@ if (isset($_POST['sub'])) {
             <li><a href="index.php">Home</a></li>
             <li><a href="about.php">About</a></li>
             <li><a href="contact.php">Contact</a></li>
-            <li><a href="courses.php">Courses</a></li>
-            <li><a href="admin/login.php">Admin</a></li>
-            <li><a href="user/login.php">Undergraduate</a></li>
-            <li><a href="pgdt/login.php">Postgraduate</a></li>
+            <li><a href="#courses.php">Program</a></li>
+            <li><a href="admin/login.php">Admin Login</a></li>
           </ul>
         </div>
         <div class="footer-list-29 footer-3">
@@ -84,6 +82,10 @@ if (isset($_POST['sub'])) {
   <button onclick="topFunction()" id="movetop" title="Go to top">
     <span class="fa fa-angle-up"></span>
   </button>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/app.js"></script>
   <script>
     // When the user scrolls down 20px from the top of the document, show the button
     window.onscroll = function() {

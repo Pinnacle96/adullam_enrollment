@@ -8,43 +8,34 @@
    </div>
  </section>
 
-
- <section class="w3l-price-2" id="news">
-   <div class="price-main py-5">
-     <div class="container py-md-3">
-       <div class="pricing-style-w3ls row py-md-5">
-         <div class="pricing-chart col-lg-12">
-           <h3 class="">All Notices</h3> <?php $query = mysqli_query($con, "select * from tblnotice ORDER BY ID DESC");
-                                          while ($row = mysqli_fetch_array($query)) {
-                                          ?>
-             <div class="tatest-top mt-md-5 mt-4">
-               <div class="price-box btn-layout bt6">
-                 <div class="grid grid-column-2">
-                   <div class="column-6">
-                     <img src="assets/images/g9.jpg" alt="" class="img-fluid">
-                   </div>
-                   <div class="column1">
-
-                     <div class="job-info">
-
-                       <h6 class="pricehead"><?php echo $row['Title']; ?></h6>
-                       <h5><?php echo $row['CreationDate']; ?></h5>
-                       <p><?php echo $row['Decription']; ?></p>
-
-                     </div>
-                   </div>
-
-                 </div>
-               </div>
-
-             </div>
-           <?php } ?>
-         </div>
-
-       </div>
-     </div>
-   </div>
- </section>
+ <section id="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 intro text-center">
+                <h6>LATEST NEWS</h6>
+                <h1>Latest Blog Post</h1>
+                <!-- <p>Contrary to popular belief, Lorem ipsum is not simply random text. It has roots in a piece of
+                    classical latin literature from 45 BC, making it over 2000 years old.</p> -->
+            </div>
+        </div>
+        <div class="row g-4">
+        <?php
+        $query = mysqli_query($con, "SELECT * FROM tblnotice ORDER BY ID DESC");
+        while ($row = mysqli_fetch_array($query)) {
+        ?>
+            <div class="col-lg-4">
+                <div class="blog-post">
+                    <a href="#" class="tag"><?php echo $row['Title']; ?></a>
+                    <img src="./assets/img/project5.jpg" alt="">
+                    <small><?php echo $row['CreationDate']; ?></small>
+                    <h4><a href="#"><?php echo $row['Title']; ?></a></h4>
+                    <p><?php echo $row['Decription']; ?></p>
+                </div>
+            </div>
+        <?php } ?>
+        </div>
+    </div>
+</section>
  <!-- grids block 5 -->
  <?php include('includes/footer.php'); ?>
  <script src="assets/js/jquery-3.3.1.min.js"></script>

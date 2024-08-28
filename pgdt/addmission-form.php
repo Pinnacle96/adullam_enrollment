@@ -142,7 +142,7 @@ $formSubmitted = !empty($admissionData);
                                             <td>Title</td>
                                             <td><?php echo htmlspecialchars($admissionData['title'] ?? 'N/A', ENT_QUOTES); ?></td>
                                            
-                                            <td><img src="uploads/<?php echo htmlspecialchars($admissionData['userpic'] ?? 'default.png', ENT_QUOTES); ?>" alt="Userpic" style="width: 150px;"></td>
+                                            <td><img src="..user/uploads/<?php echo htmlspecialchars($admissionData['userpic'] ?? 'default.png', ENT_QUOTES); ?>" alt="Userpic" style="width: 150px;"></td>
                                         </tr>
                                         <tr>
                                             <td>Program</td>
@@ -168,18 +168,18 @@ $formSubmitted = !empty($admissionData);
                                         </tr>
                                         <tr>
                                             <td>Birth Certificate</td>
-                                            <td><a href="uploads/<?php echo htmlspecialchars($admissionData['birthCert'] ?? 'default.pdf', ENT_QUOTES); ?>" target="_blank">View</a></td>
+                                            <td><a href="..user/uploads/<?php echo htmlspecialchars($admissionData['birthCert'] ?? 'default.pdf', ENT_QUOTES); ?>" target="_blank">View</a></td>
                                             <td>LGA Certificate</td>
-                                            <td><a href="uploads/<?php echo htmlspecialchars($admissionData['lgaCert'] ?? 'default.pdf', ENT_QUOTES); ?>" target="_blank">View</a></td>
+                                            <td><a href="..user/uploads/<?php echo htmlspecialchars($admissionData['lgaCert'] ?? 'default.pdf', ENT_QUOTES); ?>" target="_blank">View</a></td>
                                             <td>Reference Letter</td>
-                                            <td><a href="uploads/<?php echo htmlspecialchars($admissionData['refLetter'] ?? 'default.pdf', ENT_QUOTES); ?>" target="_blank">View</a></td>
+                                            <td><a href="..user/uploads/<?php echo htmlspecialchars($admissionData['refLetter'] ?? 'default.pdf', ENT_QUOTES); ?>" target="_blank">View</a></td>
                                         </tr>
                                        
                                         <tr>
                                             <td>Academic Certificate</td>
-                                            <td><a href="uploads/<?php echo htmlspecialchars($admissionData['acadCert'] ?? 'default.pdf', ENT_QUOTES); ?>" target="_blank">View</a></td>
+                                            <td><a href="..user/uploads/<?php echo htmlspecialchars($admissionData['acadCert'] ?? 'default.pdf', ENT_QUOTES); ?>" target="_blank">View</a></td>
                                             <td>Receipt</td>
-                                            <td><a href="uploads/<?php echo htmlspecialchars($admissionData['receipt'] ?? 'default.pdf', ENT_QUOTES); ?>" target="_blank">View</a></td>
+                                            <td><a href="..user/uploads/<?php echo htmlspecialchars($admissionData['receipt'] ?? 'default.pdf', ENT_QUOTES); ?>" target="_blank">View</a></td>
                                             <td>Admin Remark</td>
                                             <td><?php echo htmlspecialchars($admissionData['AdminRemark'] ?? 'N/A', ENT_QUOTES); ?></td>
                                         </tr>

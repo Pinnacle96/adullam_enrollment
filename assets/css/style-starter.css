@@ -4134,7 +4134,12 @@ textarea.form-control {
 a.btn.disabled,
 fieldset:disabled a.btn {
   pointer-events: none; }
-
+  .w3l-index1 .calltoaction-20 .container-fluid {
+    padding-top: 20px;    /* Adjust the padding values as needed */
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
 .btn-primary {
   color: #fff;
   background-color: #002147;
@@ -4316,7 +4321,12 @@ fieldset:disabled a.btn {
     .btn-light:not(:disabled):not(.disabled):active:focus, .btn-light:not(:disabled):not(.disabled).active:focus,
     .show > .btn-light.dropdown-toggle:focus {
       box-shadow: 0 0 0 0.2rem rgba(216, 217, 219, 0.5); }
-
+      a{
+        color: #092032;
+        text-decoration: none;
+        transition: all 0.4 ease;
+        font-weight: 500;
+    }
 .btn-dark {
   color: #fff;
   background-color: #343a40;
@@ -11873,6 +11883,7 @@ button.owl-next {
 .w3l-footer-29-main .footer-list-29 ul li,
 .w3l-footer-29-main .midd-footer-29:nth-child(1) .footer-list-29 ul li:last-child {
   list-style: none;
+  text-decoration: none;
   margin-bottom: 10px; }
 
 .w3l-footer-29-main .footer-list-29 ul li:last-child {
